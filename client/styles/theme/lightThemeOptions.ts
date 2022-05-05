@@ -1,9 +1,17 @@
 import { ThemeOptions } from '@mui/material/styles';
 
-const lightThemeOptions: ThemeOptions = {
+const theme: ThemeOptions = {
   palette: {
-    mode: 'light',
+    primary: {
+        main: '#282c44',
+    },
+    secondary: {
+        main: '#0d1944'
+    }
+  },
+  typography: {
+
   },
 };
 
-export default lightThemeOptions;
+export default theme;
