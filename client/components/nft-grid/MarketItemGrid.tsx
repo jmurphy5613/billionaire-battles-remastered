@@ -1,13 +1,22 @@
+import MarketItemGridItem from './MarketItemGridItem';
 
 
+interface props {
+    paddingTop: number,
+    gridItems: Array<any>
+}
 
-const MarketItemGrid = props => {
+const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems}) => {
 
     return (
-        <div className={classes.grid} style={{
-            marginTop: `${props.paddingTop}rem`
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr 1fr',
+            width: '65vw',
+            gridGap: '3rem',
+            marginTop: `${paddingTop}rem`
         }}>
-            {props.gridItems.map(element => {
+            {gridItems.map(element => {
                 {console.log(element.id)}
                 return (
                     <MarketItemGridItem id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} />
@@ -15,3 +24,6 @@ const MarketItemGrid = props => {
             })}
         </div> 
     )
+}
+
+export default MarketItemGrid;

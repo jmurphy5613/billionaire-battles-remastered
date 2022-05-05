@@ -9,7 +9,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import createEmotionCache from '../utility/createEmotionCache';
-import theme from '../styles/theme/lightThemeOptions';
+import primaryTheme from '../styles/theme/lightThemeOptions';
 import '../styles/globals.css';
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -17,16 +17,16 @@ interface MyAppProps extends AppProps {
 
 const clientSideEmotionCache = createEmotionCache();
 
-const lightTheme = createTheme(theme);
+const theme = createTheme(primaryTheme);
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <React.Fragment {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );

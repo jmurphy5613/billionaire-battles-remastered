@@ -1,6 +1,6 @@
 import { ThemeOptions } from '@mui/material/styles';
 
-const theme: ThemeOptions = {
+const primaryTheme: ThemeOptions = {
   palette: {
     primary: {
         main: '#282c44',
@@ -10,8 +10,10 @@ const theme: ThemeOptions = {
     }
   },
   typography: {
-
+    h2: {
+      fontFamily: "Inter"
+    }
   },
 };
 
-export default theme;
+export default primaryTheme;
