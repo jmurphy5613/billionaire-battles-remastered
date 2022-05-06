@@ -16,6 +16,6 @@
     "incremental": true,
     "strictNullChecks": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.jsx", "styles/theme/lightThemeOptions.ts", "pages/_app.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "styles/theme/lightThemeOptions.ts", "pages/_app.tsx"],
   "exclude": ["node_modules"]
 }

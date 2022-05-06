@@ -26,7 +26,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <React.Fragment {...pageProps} />
+        <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );

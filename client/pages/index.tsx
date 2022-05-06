@@ -1,18 +1,25 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Typography, Button } from '@mui/material';
+import { useRouter } from 'next/router';
+import Typed from 'react-typed';
+
+import ConnectedStatus from '../components/ConnectedStatus';
+
+declare var window: any;
 
 const Home = () => {
   const [connectedWallet, setConnectedWallet] = useState('');
   const [walletIsConnected, setWalletIsConnected] = useState(false);
 
-  useEffect(async () => {
-      await checkConnection();
+  useEffect( () => {
+      const checkConnection = async () => {
+        await checkConnection();
+      }
   }, []);
 
   const checkConnection = async () => {
       const provider = window.ethereum;
-      await provider.request({ method: 'eth_accounts' }).then(async (response) => {
+      await provider.request({ method: 'eth_accounts' }).then(async (response:any) => {
           if(response.length == 0) {
               setWalletIsConnected(false);
           } else {
@@ -22,6 +29,7 @@ const Home = () => {
       });
   }
 
+  const Router = useRouter();
 
   const connectWallet = async () => {
 
@@ -32,65 +40,65 @@ const Home = () => {
       let provider = window.ethereum;
 
       if(typeof provider != 'undefined') {
-          await provider.request({ method: 'eth_requestAccounts' }).then(accounts => {
+          await provider.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
               setConnectedWallet(accounts);
               setWalletIsConnected(true);
           })
       }
-      window.ethereum.on('accountsChanged', function(accounts) {
+      window.ethereum.on('accountsChanged', function(accounts:any) {
           setWalletIsConnected(true);
           setConnectedWallet(accounts);
       });
   }
 
-  const classes = useStyles();
-
   return (
       <div style={{
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#282c44',
         height: '100vh',
         width: '100vw',
       }}>
           <ConnectedStatus connected={walletIsConnected} />
-          <div className={classes.titleMargin} style={{
+          <div style={{
                 paddingTop: '15%',
                 marginLeft: '15%',
           }}>
               <Typography sx={{
-                fontFamily: theme.typography.fontFamily.secondary,
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: '1rem',
                 color: '#fe5b77',
                 marginBottom: '1.7rem'
-              }} variant="h5" className={classes.smallTitle}>
+              }} variant="h5">
                   Billionaire Beatdown
               </Typography>
-              <Typography variant="h2" className={classes.mainTitle} sx={{
-                fontFamily: theme.typography.fontFamily.primary,
+              <Typography variant="h2" sx={{
+                fontFamily: "Inter, sans-serif",
                 color: '#ffffff',
                 fontWeight: '600'
               }}>
                   {`Fight the richest tech pioneers `}<br/>  {`on a platform built with `}
                   
                   <Typed 
-                      className={classes.inerMainTitle}
                       strings={['Hardhat', 'Ethers', 'Solidity', 'Open Zeppelin']}
                       loop
                       typeSpeed={60}
                       backSpeed={60}
+                      style={{
+                          color: '#fe5b77'
+                      }}
                   />
               </Typography>
-              <Typography variant="h6" className={classes.descriptionTitle} sx={{
-                fontFamily: theme.typography.fontFamily.tertiary,
+              <Typography variant="h6" sx={{
+                fontFamily: 'Noto Sans, sans-serif',
                 color: '#b2bAc2',
                 marginTop: '1.7rem'
               }}>
                   This is a browser game that is built on the Ethereum blockchain on the rinkeby testnet.
               </Typography>
               
-              <Button onClick={connectWallet} variant="contained" className={classes.landingPageButton} sx={{
+              <Button onClick={connectWallet} variant="contained" sx={{
                 backgroundColor: '#6c56d2',
                 color: '#ffffff',
-                fontFamily: theme.typography.fontFamily.secondary,
+                fontFamily: 'Poppins, sans-serif',
                 textTransform: 'none',
                 marginTop: '1.7rem',
                 width: '12rem',
