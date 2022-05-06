@@ -16,35 +16,35 @@ const RegularPlayerView:React.FC = () => {
 
     return (
         <div style={{
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: '#282c44',
             height: '100vh',
             width: '100vw',
         }}>
             <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: {backgroundColor: "white"}}} centered>
                 <Tab sx={{
                     color: '#fe5b77',
-                    fontFamily: theme.typography.fontFamily.secondary,
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '1.0rem',
                     fontWeight: '500',
                     textTransform: 'none',
                 }} label="Market Place" />
                 <Tab sx={{
                     color: '#fe5b77',
-                    fontFamily: theme.typography.fontFamily.secondary,
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '1.0rem',
                     fontWeight: '500',
                     textTransform: 'none',
                 }} label="Owned Billionaires" />
                 <Tab sx={{
                     color: '#fe5b77',
-                    fontFamily: theme.typography.fontFamily.secondary,
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '1.0rem',
                     fontWeight: '500',
                     textTransform: 'none',
                 }} label="Fight" />
                 <Tab sx={{
                     color: '#fe5b77',
-                    fontFamily: theme.typography.fontFamily.secondary,
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '1.0rem',
                     fontWeight: '500',
                     textTransform: 'none',
