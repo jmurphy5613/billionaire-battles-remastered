@@ -16,11 +16,11 @@ const RegularPlayerView:React.FC = () => {
 
     return (
         <div style={{
-            backgroundColor: '#282c44',
             height: '100vh',
             width: '100vw',
+            backgroundColor: '#282c44'
         }}>
-            <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: {backgroundColor: "white"}}} centered>
+            <Tabs value={value} classes={{ indicator: 'white' }} onChange={handleChange} TabIndicatorProps={{style: {backgroundColor: "white"}}} centered>
                 <Tab sx={{
                     color: '#fe5b77',
                     fontFamily: 'Poppins, sans-serif',
