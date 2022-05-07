@@ -51,7 +51,6 @@ const OwnedBillionaires:React.FC = () => {
                     const currentData = await contract.getCharacterDisplayDataById(nftIndexesInt[i]);
                     characterMetaData.push(currentData);
                 }
-                console.log(characterMetaData);
 
                 //get the health from the characters
                 const characterHealth = [];
@@ -63,7 +62,6 @@ const OwnedBillionaires:React.FC = () => {
                     }
                     characterHealth.push(currentHealthInt);
                 }
-                console.log(characterHealth);
 
                 //get everything in propper object format
                 for(let i = 0; i < nftIndexesInt.length; i++) {

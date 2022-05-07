@@ -54,14 +54,14 @@ const ItemProfile = () => {
 
     return (
         <div style={{
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: '#282c44',
             height: '100vh',
             width: '100vw',
         }}>
             <div style={{
                 backgroundColor: '#ffffff',
-                height: '500px',
-                width: '500px',
+                height: '450px',
+                width: '450px',
                 borderRadius: '2rem',
                 backgroundImage: `url(${characterData[0]})`,    
                 backgroundSize: 'cover'

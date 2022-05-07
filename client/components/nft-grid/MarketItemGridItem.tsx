@@ -38,15 +38,20 @@ const MarketItemGridItem:React.FC<props> = ({
             <Box sx={{
                 position: 'absolute',
                 transition: '0.5s',
-                '&:hover': {
-                    cursor: 'pointer',
-                    backdropFilter: 'blur(2px)', /* Chrome, Safari, Opera */
-                    filter: 'blur(2px)',                        
-                },
+                top: '0',
+                left: '0',
                 height: '100%',
                 width: '100%',
+                zIndex: '1',
+                opacity: 0,
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                '&:hover': {
+                    opacity: '1'
+                }
+
             }}>
                 <HealthOnItem health={health} maxHealth={maxHealth} />
+                { isBeingHovered && <SeeStats id={id} />  }
             </Box>
         
             <div
@@ -60,7 +65,6 @@ const MarketItemGridItem:React.FC<props> = ({
                     borderTopRightRadius: '5px',
                 }}
             >
-            { isBeingHovered && <SeeStats id={id} />  }
 
             </div>
 

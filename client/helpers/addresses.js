@@ -1,1 +1,1 @@
-export const BillionaireBattlesAddress = '0x210e0fD4ce59f429dbAFa332E6c800C0DE29dB4a';
+export const BillionaireBattlesAddress = '0xC1E09375df52Ca009Fa564f1a7e27B7D12B103D6';
