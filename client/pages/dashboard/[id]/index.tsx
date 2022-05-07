@@ -96,15 +96,21 @@ const ItemProfile = () => {
                 height: '450px',
                 display: 'flex',
                 flexDirection: 'column',
+                paddingLeft: '1rem',
             }}>
                 <Typography variant="h3" sx={{
                     color: '#ffffff',
                     fontSize: '2rem',
                     fontFamily: "Inter",
                     fontWeight: '700',
-                    paddingLeft: '1rem',
                 }}>
                     {`${characterData[1]} #${id}`}
+                </Typography>
+                <Typography variant="h4" sx={{
+                    color: 'rgb(62, 67, 138)',
+                    fontSize: '1.5rem',
+                }}>
+                    Billionaire Battles
                 </Typography>
                 <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />
             </div>

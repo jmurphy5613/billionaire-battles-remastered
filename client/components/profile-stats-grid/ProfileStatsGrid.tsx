@@ -15,7 +15,6 @@ const ProfileStatsGrid:React.FC<gridProps> = ({name, items}) => {
             gridTemplateColumns: '1fr 1fr 1fr',
             width: '100%',
             gridGap: '1rem',
-            paddingLeft: '1rem',
             paddingTop: '1rem',
         }}>
             {console.log(items)}
