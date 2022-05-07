@@ -21,12 +21,13 @@ const MarketItemGridItem:React.FC<props> = ({
 
     const [isBeingHovered, setIsBeingHovered] = useState(false);
 
+    if(id == 0) return <div></div>;
+
     return (
         <div style={{
             height: '30vh',
             display: 'inline-flex',
             flexDirection: 'column',
-            backgroundColor: theme.palette.secondary.main,
             borderRadius: '5px',
             border: '1px solid #3750A8',
             position: 'relative',

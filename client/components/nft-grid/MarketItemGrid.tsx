@@ -8,6 +8,11 @@ interface props {
 
 const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems}) => {
 
+    if(!gridItems) return <div></div>;
+
+    console.log(gridItems)
+    //
+
     return (
         <div style={{
             display: 'grid',

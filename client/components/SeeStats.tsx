@@ -15,7 +15,6 @@ const SeeStats:React.FC<props> = ({id}) => {
                 color: '#ffffff',
                 zIndex: '999',
                 fontSize: '1.5rem',
-                fontFamily: theme.typography.h2.fontFamily,
                 fontWeight: '500',
                 left: '50%',
                 top: '35%',
