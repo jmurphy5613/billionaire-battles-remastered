@@ -46,14 +46,13 @@ const MarketItemGridItem:React.FC<props> = ({
                 opacity: 0,
                 backgroundColor: 'rgba(0,0,0,0.5)',
                 '&:hover': {
-                    opacity: '1'
+                    opacity: '0.9'
                 }
 
             }}>
-                <HealthOnItem health={health} maxHealth={maxHealth} />
                 { isBeingHovered && <SeeStats id={id} />  }
             </Box>
-        
+            <HealthOnItem health={health} maxHealth={maxHealth} />
             <div
                 style={{
                     backgroundImage: `url(${img})`,

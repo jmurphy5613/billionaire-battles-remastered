@@ -97,6 +97,14 @@ contract BillionaireBattles is ERC721 {
         return characters[1].name;
     }
 
+    function getCharacterCount() public view returns (uint) {
+        return numberOfCharacters;
+    }
+
+    function getOwnerOfCharcterByID(uint id) public view returns (address) {
+        return characters[id].owner;
+    }
+
     function getCharactersFromAddress(address current) public view returns (uint[] memory) {
         uint currentIndex = 0;
         uint[] memory ids = new uint[](numberOfCharacters);

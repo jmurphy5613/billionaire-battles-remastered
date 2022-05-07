@@ -32,6 +32,7 @@ const OwnedBillionaires:React.FC = () => {
             const wallet = await etherConnection.request({ method: 'eth_accounts' })
             console.log(wallet);
 
+
             //get the users nfts
             const nftIndexesHex = await contract.getCharactersFromAddress(wallet[0]);
             if(nftIndexesHex) {

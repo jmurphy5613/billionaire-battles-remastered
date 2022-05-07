@@ -13,9 +13,8 @@ const SeeStats:React.FC<props> = ({id}) => {
             <Typography variant="h2" sx={{
                 position: 'absolute',
                 color: '#ffffff',
-                zIndex: '999',
                 fontSize: '1.5rem',
-                fontWeight: '500',
+                fontWeight: '700',
                 left: '50%',
                 top: '35%',
                 transform: 'translate(-50%, 40%)',
