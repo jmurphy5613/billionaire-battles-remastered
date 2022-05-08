@@ -155,4 +155,6 @@ contract BillionaireBattles is ERC721 {
         return ids;
     }
 
+    //proifle getter functions
+
 }

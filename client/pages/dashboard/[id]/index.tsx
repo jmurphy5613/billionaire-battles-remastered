@@ -7,8 +7,11 @@ import { BillionaireBattlesAddress } from "../../../helpers/addresses";
 import BillionaireBattles from '../../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
 
 import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
 
 import ProfileStatsGrid from '../../../components/profile-stats-grid/ProfileStatsGrid';
+import OwnerUrl from '../../../components/OwnerUrl';
+import SellButtonPopup from '../../../components/SellButtonPopup';
 
 
 
@@ -31,12 +34,30 @@ const ItemProfile = () => {
             await contract.getCharacterDisplayDataById(id).then((res:any) => {
                 setCharacterData(res);
                 setDataLoaded(true);
+            });
+
+            await contract.getOwnerOfCharcterByID(id).then((res:any) => {
+                setCharacterOwner(res);
+            });
+        }
+    }
+
+    const getUserWallet = async () => {
+        let provider = window.ethereum;
+
+        if(typeof provider != 'undefined') {
+            await provider.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
+                setUserWallet(accounts[0]);
+                if(userWallet == characterOwner) setUserIsOwner(true);
             })
         }
     }
 
+    const [userIsOwner, setUserIsOwner] = useState(false);
+    const [userWallet, setUserWallet] = useState<string>();
     const [characterData, setCharacterData] = useState<Array<number>>();
     const [dataLoaded, setDataLoaded] = useState<boolean>();
+    const [characterOwner, setCharacterOwner] = useState<string>();
     const [characterAbilities, setCharacterAbilities] = useState<Array<any>>([
         {
             name: 'Primary Attack',
@@ -62,6 +83,7 @@ const ItemProfile = () => {
         }
         const fetchData = async () => {
             await fetchCharacterData();
+            await getUserWallet();
         }
         fetchData();
     }, [id])
@@ -92,7 +114,7 @@ const ItemProfile = () => {
                 backgroundSize: 'cover'
             }} />
             <div style={{
-                width: '450px',
+                width: '475px',
                 height: '450px',
                 display: 'flex',
                 flexDirection: 'column',
@@ -109,10 +131,19 @@ const ItemProfile = () => {
                 <Typography variant="h4" sx={{
                     color: 'rgb(62, 67, 138)',
                     fontSize: '1.5rem',
+                    marginTop: '0.1rem',
                 }}>
                     Billionaire Battles
                 </Typography>
-                <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />
+
+                {userIsOwner ? <SellButtonPopup name={characterData[1]} /> : <div style={{marginTop: '0.3rem'}}>
+                    <OwnerUrl owner={characterOwner} />
+                </div>}
+
+                <div style={{marginTop: '0.3rem'}}>
+                    <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />
+                </div>
+
             </div>
         </div>
     )

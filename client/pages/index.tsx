@@ -17,18 +17,6 @@ const Home = () => {
       }
   }, []);
 
-  const checkConnection = async () => {
-      const provider = window.ethereum;
-      await provider.request({ method: 'eth_accounts' }).then(async (response:any) => {
-          if(response.length == 0) {
-              setWalletIsConnected(false);
-          } else {
-              setConnectedWallet(response[0]);
-              setWalletIsConnected(true);
-          }
-      });
-  }
-
   const Router = useRouter();
 
   const connectWallet = async () => {
