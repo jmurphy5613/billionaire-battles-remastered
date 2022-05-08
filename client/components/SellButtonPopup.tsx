@@ -1,14 +1,19 @@
 import Popup from "reactjs-popup";
+import SubmitListing from "./SubmitListing";
+import InputErrorCode from "./InputErrorCode";
+
 import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 interface sellButtonProps {
     name: string,
+    tokenId: number
 }
 
-const SellButtonPopup:React.FC<sellButtonProps> = ({name}) => {
+const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
 
-    const [price, setPrice] = useState<number>();
+    const [price, setPrice] = useState<any>();
+    const [isValidAmount, setIsValidAmount] = useState<boolean>();
 
     return (
         <Popup 
@@ -51,7 +56,14 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name}) => {
                         marginTop: '1rem',
                         marginBottom: '3rem',
                     }}>
-                        <input type="text" placeholder="Price" style={{
+                        <input type="text" placeholder="Price" onChange={e => {
+                            setPrice(e.target.value);
+                            if(typeof Number(e.target.value) === 'number') {
+                                setIsValidAmount(true);
+                            } else {
+                                setIsValidAmount(false);
+                            }
+                        }} style={{
                             //create a style for the input
                             width: '30%',
                             height: '3rem',
@@ -75,6 +87,7 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name}) => {
                         }}>
                             ETH
                         </Typography>
+                        {isValidAmount ? <SubmitListing tokenId={tokenId} /> : <InputErrorCode />}
                     </div>  
 
                 </div>

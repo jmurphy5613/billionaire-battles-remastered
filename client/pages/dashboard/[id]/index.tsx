@@ -136,7 +136,7 @@ const ItemProfile = () => {
                     Billionaire Battles
                 </Typography>
 
-                {userIsOwner ? <SellButtonPopup name={characterData[1]} /> : <div style={{marginTop: '0.3rem'}}>
+                {userIsOwner ? <SellButtonPopup name={characterData[1]} tokenId={id} /> : <div style={{marginTop: '0.3rem'}}>
                     <OwnerUrl owner={characterOwner} />
                 </div>}
 
