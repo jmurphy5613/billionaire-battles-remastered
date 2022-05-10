@@ -11,7 +11,7 @@ const SubmitListing:React.FC<submitListingProps> = ({tokenId}) => {
     }
 
     return (
-        <Button>
+        <Button variant="contained" >
             Submit Listing
         </Button>
     )

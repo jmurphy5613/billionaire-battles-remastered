@@ -12,7 +12,7 @@ interface sellButtonProps {
 
 const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
 
-    const [price, setPrice] = useState<any>();
+    const [price, setPrice] = useState<number>();
     const [isValidAmount, setIsValidAmount] = useState<boolean>();
 
     return (
@@ -30,7 +30,7 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
 
             }}>
                 <div style={{
-                    width: '30vw',
+                    width: '40vw',
                     height: '40vh',
                     background: '#00000f',
                     borderRadius: '1rem',
@@ -38,13 +38,13 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'column',
-                    
                 }}>
                     <Typography sx={{
                         color: '#fe5b77',
                         fontSize: '1.8rem',
                         fontFamily: "Inter",
                         fontWeight: '700',
+                        textAlign: 'center'
                     }}>
                         {`Set price for ${name}`}
                     </Typography>
@@ -54,11 +54,11 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
                         justifyContent: 'center',
                         alignItems: 'center', 
                         marginTop: '1rem',
-                        marginBottom: '3rem',
+                        marginBottom: '3rem'
                     }}>
                         <input type="text" placeholder="Price" onChange={e => {
-                            setPrice(e.target.value);
-                            if(typeof Number(e.target.value) === 'number') {
+                            if(!isNaN(e.target.value)) {
+                                setPrice(e.target.value);
                                 setIsValidAmount(true);
                             } else {
                                 setIsValidAmount(false);
@@ -87,9 +87,8 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
                         }}>
                             ETH
                         </Typography>
-                        {isValidAmount ? <SubmitListing tokenId={tokenId} /> : <InputErrorCode />}
                     </div>  
-
+                    {isValidAmount ? <SubmitListing tokenId={tokenId} /> : <InputErrorCode />}
                 </div>
             </div>
         </Popup>

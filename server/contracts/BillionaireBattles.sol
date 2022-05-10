@@ -69,6 +69,8 @@ contract BillionaireBattles is ERC721 {
 
     mapping(uint => character) characters;
 
+    mapping(uint => uint) prices;
+
     character[] characterRoster;
 
     function mintItemById(uint id) public {
@@ -153,6 +155,16 @@ contract BillionaireBattles is ERC721 {
             }
         }
         return ids;
+    }
+
+    function createMarketListing(
+        uint256 tokenId,
+        uint256 price
+    ) public {
+        require(price > 0, "Price can't be 0");
+        prices[tokenId] = price;
+        _transfer(msg.sender, address(this), tokenId);
+        characters[tokenId].isBeingSold = true;
     }
 
     //proifle getter functions

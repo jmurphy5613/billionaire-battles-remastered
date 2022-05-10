@@ -18,6 +18,10 @@ async function main() {
     console.log('Deployed Contract to: ', battles.address);
     await battles.mintItemById(0);
     await battles.mintItemById(1);
+
+    await battles.createMarketListing(1, 10);
+    let array = await battles.getMarketItems();
+    console.log(array);
 }
 
 
