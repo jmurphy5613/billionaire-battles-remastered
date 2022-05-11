@@ -3,12 +3,14 @@ import MarketItemGridItem from './MarketItemGridItem';
 
 interface props {
     paddingTop: number,
-    gridItems: Array<any>
+    gridItems: Array<any>,
+    isMarketplace: boolean,
 }
 
-const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems}) => {
+const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems, isMarketplace}) => {
 
     if(!gridItems) return <div></div>;
+
 
     return (
         <div style={{
@@ -21,7 +23,7 @@ const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems}) => {
             {gridItems.map(element => {
                 {console.log(element.id)}
                 return (
-                    <MarketItemGridItem id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} />
+                    <MarketItemGridItem id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} isMarketplaceItem={isMarketplace} />
                 )
             })}
         </div> 

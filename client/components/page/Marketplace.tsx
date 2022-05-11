@@ -10,11 +10,16 @@ import { BillionaireBattlesAddress } from '../../helpers/addresses';
 //mui imports
 import { Typography, Box } from '@mui/material';
 
+import MarketItemGrid from '../nft-grid/MarketItemGrid';
+import { putNftIntoCorrectObjectFormat } from '../../helpers/format';
+
 declare var window: any
 
 const MarketPlace = () => {
 
     const [numberOfMarketItems, setNumberOfMarketItems] = useState<number>();
+    const [marketItems, setMarketItems] = useState([]);
+    const [dataFetched, setDataFetched] = useState(false);
 
     const getMarketItems = async () => {
         const etherConnection = window.ethereum;
@@ -24,10 +29,6 @@ const MarketPlace = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
-            //obtain wallet address
-            const wallet = await etherConnection.request({ method: 'eth_accounts' })
-            console.log(wallet);
-
             //get the market items
             const marketItemIdsHex = await contract.getMarketItems();
 
@@ -36,14 +37,52 @@ const MarketPlace = () => {
                 for(let i = 0; i < marketItemIdsHex.length; i++) {
                     nftIndexesInt.push(parseInt(marketItemIdsHex[i], 16));
                 }
-                console.log(nftIndexesInt);
 
                 let numberThatIsNotZero = false;
                 for(let i = 0; i < nftIndexesInt.length; i++) {
                     if(nftIndexesInt[i] > 0) numberThatIsNotZero = true;
                 }
                 if(!numberThatIsNotZero) setNumberOfMarketItems(0);
-            } 
+                if(numberThatIsNotZero) {
+                    await getMarketItemData(nftIndexesInt);
+                }
+            }
+            setDataFetched(true); 
+        }
+    }
+
+    const getMarketItemData = async (nftIndexesInt:Array<number>) => {
+
+        const etherConnection = window.ethereum;
+
+        if(etherConnection) {
+            const provider = new ethers.providers.Web3Provider(etherConnection);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
+
+            //get the metadata from the nfts owned
+            const characterMetaData = [];
+            for(let i = 0; i < nftIndexesInt.length; i++) {
+                const currentData = await contract.getCharacterDisplayDataById(nftIndexesInt[i]);
+                characterMetaData.push(currentData);
+            }
+
+            //get the health from the characters
+            const characterHealth = [];
+            for(let i = 0; i < nftIndexesInt.length; i++) {
+                const currentHealthHex = await contract.getCharacterHealthAndMaxHealthById(nftIndexesInt[i]);
+                const currentHealthInt = [];
+                for(let j = 0; j < 2; j++) {
+                    currentHealthInt.push(parseInt(currentHealthHex[j], 10));
+                }
+                characterHealth.push(currentHealthInt);
+            }
+
+            //get everything in propper object format
+            for(let i = 0; i < nftIndexesInt.length; i++) {
+                const objectFormat = putNftIntoCorrectObjectFormat(nftIndexesInt[i], characterMetaData[i][1], characterMetaData[i][0], characterHealth[i][0], characterHealth[i][1] );
+                marketItems.push(objectFormat);
+            }            
         }
     }
 
@@ -75,8 +114,12 @@ const MarketPlace = () => {
     }
 
     return (
-        <div>
-            
+        <div style={{
+            display: 'flex',
+            width: '100vw',
+            justifyContent: 'center',
+        }}>
+            <MarketItemGrid gridItems={marketItems} paddingTop={2} isMarketplace={true} />
         </div>
     )
 }

@@ -7,11 +7,11 @@ import { BillionaireBattlesAddress } from "../../../helpers/addresses";
 import BillionaireBattles from '../../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
 
 import { Typography } from "@mui/material";
-import { Button } from "@mui/material";
 
 import ProfileStatsGrid from '../../../components/profile-stats-grid/ProfileStatsGrid';
 import OwnerUrl from '../../../components/OwnerUrl';
 import SellButtonPopup from '../../../components/SellButtonPopup';
+import CharacterPrice from '../../../components/CharacterPrice';
 
 
 
@@ -47,17 +47,15 @@ const ItemProfile = () => {
 
         if(typeof provider != 'undefined') {
             await provider.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
-                setUserWallet(accounts[0]);
-                if(userWallet == characterOwner) setUserIsOwner(true);
+                if(accounts[0] === characterOwner.toLowerCase()) setUserIsOwner(true);
             })
         }
     }
 
     const [userIsOwner, setUserIsOwner] = useState(false);
-    const [userWallet, setUserWallet] = useState<string>();
     const [characterData, setCharacterData] = useState<Array<number>>();
     const [dataLoaded, setDataLoaded] = useState<boolean>();
-    const [characterOwner, setCharacterOwner] = useState<string>();
+    const [characterOwner, setCharacterOwner] = useState<string>("");
     const [characterAbilities, setCharacterAbilities] = useState<Array<any>>([
         {
             name: 'Primary Attack',
@@ -84,9 +82,10 @@ const ItemProfile = () => {
         const fetchData = async () => {
             await fetchCharacterData();
             await getUserWallet();
+            console.log(userIsOwner);
         }
         fetchData();
-    }, [id])
+    }, [id, characterOwner])
 
     if(!dataLoaded) {
         return (
@@ -139,6 +138,8 @@ const ItemProfile = () => {
                 {userIsOwner ? <SellButtonPopup name={characterData[1]} tokenId={id} /> : <div style={{marginTop: '0.3rem'}}>
                     <OwnerUrl owner={characterOwner} />
                 </div>}
+
+                <CharacterPrice />
 
                 <div style={{marginTop: '0.3rem'}}>
                     <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />

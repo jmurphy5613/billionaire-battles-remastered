@@ -8,7 +8,8 @@ interface props {
     maxHealth: number,
     img: string,
     id: number,
-    name: string
+    name: string,
+    isMarketplaceItem: boolean,
 }
 
 const MarketItemGridItem:React.FC<props> = ({
@@ -16,10 +17,15 @@ const MarketItemGridItem:React.FC<props> = ({
     maxHealth,
     img,
     id,
-    name
+    name,
+    isMarketplaceItem,
 }) => {
 
     const [isBeingHovered, setIsBeingHovered] = useState(false);
+
+    const getHoverItem = () => {
+        return <SeeStats id={id} />;
+    }
 
     if(id == 0) return <div></div>;
 
@@ -50,7 +56,7 @@ const MarketItemGridItem:React.FC<props> = ({
                 }
 
             }}>
-                { isBeingHovered && <SeeStats id={id} />  }
+                { isBeingHovered && getHoverItem()  }
             </Box>
             <HealthOnItem health={health} maxHealth={maxHealth} />
             <div

@@ -91,7 +91,7 @@ const OwnedBillionaires:React.FC = () => {
             display: 'flex',
             justifyContent: 'center'
         }}>
-            <MarketItemGrid gridItems={ownedBillionaires} paddingTop={2} />
+            <MarketItemGrid gridItems={ownedBillionaires} paddingTop={2} isMarketplace={false} />
 
         </div>
     )
