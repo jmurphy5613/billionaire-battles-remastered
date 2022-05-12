@@ -12,6 +12,7 @@ import ProfileStatsGrid from '../../../components/profile-stats-grid/ProfileStat
 import OwnerUrl from '../../../components/OwnerUrl';
 import SellButtonPopup from '../../../components/SellButtonPopup';
 import CharacterPrice from '../../../components/CharacterPrice';
+import BuyButton from '../../../components/BuyButton';
 
 
 
@@ -139,8 +140,14 @@ const ItemProfile = () => {
                     <OwnerUrl owner={characterOwner} />
                 </div>}
 
-                <CharacterPrice />
-
+                <div style={{
+                    display: 'flex',
+                    width: '100%'
+                }}>
+                    <CharacterPrice />
+                    <BuyButton marginLeft={3} tokenId={id} />
+                    
+                </div>
                 <div style={{marginTop: '0.3rem'}}>
                     <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />
                 </div>
