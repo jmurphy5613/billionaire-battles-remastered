@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "E:\\Programming\\billionaire-battles-remastered\\server\\contracts\\BillionaireBattles.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "20ffcaf01e3e859107f75c046726937f",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/contracts/BillionaireBattles.sol": {
+      "lastModificationDate": 1652448931020,
+      "contentHash": "45f91a3f072359f149767dd69bc5575f",
       "sourceName": "contracts/BillionaireBattles.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -39,9 +39,9 @@
         "BillionaireBattles"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\ERC721.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "6292adeda9d57195b80f50bab82e502f",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
+      "lastModificationDate": 1651804663561,
+      "contentHash": "21b9f3bdb3e60f56ea81361c37420136",
       "sourceName": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -82,8 +82,8 @@
         "ERC721"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\hardhat\\console.sol": {
-      "lastModificationDate": 1240428288000,
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1652200356457,
       "contentHash": "cc4777addd464ea56fa35b1c45df0591",
       "sourceName": "hardhat/console.sol",
       "solcConfig": {
@@ -117,9 +117,9 @@
         "console"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\IERC721.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "4e218b3ecb01d4160439e856b3a887a3",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+      "lastModificationDate": 1651804663561,
+      "contentHash": "cd8e72e5859bddd5fd26b2fb5c51c846",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -154,9 +154,9 @@
         "IERC721"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\IERC721Receiver.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "1e93146401ef4ddc3fbbba795d8abbbd",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1651804663561,
+      "contentHash": "c22d4395e33763de693fd440c6fd10e1",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -189,9 +189,9 @@
         "IERC721Receiver"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\token\\ERC721\\extensions\\IERC721Metadata.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "00a5e045d4844f66434a25a5c7c425e6",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "lastModificationDate": 1651804664397,
+      "contentHash": "efbc0d15b80a74e34dbe8da0f3e879bb",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -226,9 +226,9 @@
         "IERC721Metadata"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\utils\\Address.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "f856029f8dd8f6dd4ea5a60940a532ae",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1651805638381,
+      "contentHash": "83ddb12f86533e8297741fcd32f14f1f",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -261,9 +261,9 @@
         "Address"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "e7f98c33ad1d39d8a6661bf0804fae36",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1651804661873,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -296,9 +296,9 @@
         "Context"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\utils\\Strings.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "88396d54f978442980a1135de6c12ed7",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1651804661873,
+      "contentHash": "9c54c6c065d9e590fdcdd72c451425b9",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -331,9 +331,9 @@
         "Strings"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\ERC165.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "46a182d4b952cafd81714841bad4edb0",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+      "lastModificationDate": 1651804663562,
+      "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -368,9 +368,9 @@
         "ERC165"
       ]
     },
-    "E:\\Programming\\billionaire-battles-remastered\\server\\node_modules\\@openzeppelin\\contracts\\utils\\introspection\\IERC165.sol": {
-      "lastModificationDate": 1240428288000,
-      "contentHash": "48674212f545f00ae3efc963b05ffa18",
+    "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1651804663562,
+      "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
         "version": "0.8.0",

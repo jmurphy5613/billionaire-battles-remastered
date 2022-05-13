@@ -173,7 +173,7 @@ contract BillionaireBattles is ERC721 {
         characters[tokenId].isBeingSold = true;
     }
 
-    function createMarketSale(uint256 tokenId) public {
+    function createMarketSale(uint256 tokenId) public payable {
         require(characters[tokenId].isBeingSold == true, "This item is not for sale");
         require(prices[tokenId] == msg.value, "Submit the asking price");
 

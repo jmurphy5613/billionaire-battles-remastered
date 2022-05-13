@@ -1,5 +1,10 @@
 import { Button } from '@mui/material';
 
+import { ethers } from 'ethers';
+
+import { BillionaireBattlesAddress } from '../helpers/addresses';
+import BillionaireBattles from '../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
+
 
 interface buyButtonProps {
     tokenId: number,
@@ -10,12 +15,18 @@ declare var window:any;
 
 const BuyButton:React.FC<buyButtonProps> = ({ tokenId, marginLeft }) => {
 
-    const onButtonClick = () => {
-        const ethereum = window.ethereum;
+    const onButtonClick = async () => {
+        const etherConnection = window.ethereum;
 
-        if(ethereum) {
+        if(etherConnection) {
             //request transaction
-            
+            const provider = new ethers.providers.Web3Provider(etherConnection);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
+
+            await contract.createMarketSale(tokenId, {
+                value: 10
+            });
         }
     }
 

@@ -20,8 +20,7 @@ async function main() {
     await battles.mintItemById(1);
 
     await battles.createMarketListing(1, 10);
-    let array = await battles.getMarketItems();
-    console.log(array);
+    await battles.createMarketSale(1);
 }
 
 
