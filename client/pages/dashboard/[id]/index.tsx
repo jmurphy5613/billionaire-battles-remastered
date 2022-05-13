@@ -145,7 +145,7 @@ const ItemProfile = () => {
                     width: '100%'
                 }}>
                     <CharacterPrice />
-                    <BuyButton marginLeft={3} tokenId={id} />
+                    { !userIsOwner && <BuyButton marginLeft={3} tokenId={id} /> }
                     
                 </div>
                 <div style={{marginTop: '0.3rem'}}>

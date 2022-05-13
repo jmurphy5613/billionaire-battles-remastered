@@ -18,9 +18,6 @@ async function main() {
     console.log('Deployed Contract to: ', battles.address);
     await battles.mintItemById(0);
     await battles.mintItemById(1);
-
-    await battles.createMarketListing(1, 10);
-    await battles.createMarketSale(1);
 }
 
 
@@ -34,4 +31,4 @@ const runMain = async () => {
     }
   };
   
-  runMain();
+runMain();

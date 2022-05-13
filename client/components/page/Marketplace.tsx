@@ -32,6 +32,8 @@ const MarketPlace = () => {
             //get the market items
             const marketItemIdsHex = await contract.getMarketItems();
 
+            console.log(marketItemIdsHex);
+
             if(marketItemIdsHex) {
                 const nftIndexesInt = [];
                 for(let i = 0; i < marketItemIdsHex.length; i++) {

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/johnmurphy/Documents/Mac-Programming/billionaire-battles-remastered/server/contracts/BillionaireBattles.sol": {
-      "lastModificationDate": 1652448931020,
-      "contentHash": "45f91a3f072359f149767dd69bc5575f",
+      "lastModificationDate": 1652454545716,
+      "contentHash": "a3bb940666665f73bc2c88117cb2e029",
       "sourceName": "contracts/BillionaireBattles.sol",
       "solcConfig": {
         "version": "0.8.0",

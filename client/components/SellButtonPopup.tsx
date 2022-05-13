@@ -88,7 +88,7 @@ const SellButtonPopup:React.FC<sellButtonProps> = ({name, tokenId}) => {
                             ETH
                         </Typography>
                     </div>  
-                    {isValidAmount ? <SubmitListing tokenId={tokenId} /> : <InputErrorCode />}
+                    {isValidAmount ? <SubmitListing tokenId={tokenId} price={price} /> : <InputErrorCode />}
                 </div>
             </div>
         </Popup>
