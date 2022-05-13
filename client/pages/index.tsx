@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Typed from 'react-typed';
 
 import ConnectedStatus from '../components/ConnectedStatus';
+import HomepageOwnerNav from '../components/HomepageOwnerNav';
 
 import { OwnerAddress } from '../helpers/addresses';
 
@@ -56,6 +57,12 @@ const Home = () => {
         height: '100vh',
         width: '100vw',
       }}>
+          { userIsOwner && 
+            <> 
+              <HomepageOwnerNav title={"Create Boss"} url={"create-boss"} /> 
+              <HomepageOwnerNav title={"Create Character"} url={"create-character"} />
+            </> 
+          }
           <ConnectedStatus connected={walletIsConnected} />
           <div style={{
                 paddingTop: '15%',
