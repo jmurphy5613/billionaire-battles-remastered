@@ -5,11 +5,14 @@ import Typed from 'react-typed';
 
 import ConnectedStatus from '../components/ConnectedStatus';
 
+import { OwnerAddress } from '../helpers/addresses';
+
 declare var window: any;
 
 const Home = () => {
   const [connectedWallet, setConnectedWallet] = useState('');
   const [walletIsConnected, setWalletIsConnected] = useState(false);
+  const [userIsOwner, setUserIsOwner] = useState(false);
 
   useEffect( () => {
       const checkConnection = async () => {
@@ -31,12 +34,20 @@ const Home = () => {
           await provider.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
               setConnectedWallet(accounts);
               setWalletIsConnected(true);
+              checkIfUserIsOwner(accounts[0]);
           })
       }
       window.ethereum.on('accountsChanged', function(accounts:any) {
           setWalletIsConnected(true);
           setConnectedWallet(accounts);
       });
+  }
+
+  const checkIfUserIsOwner = async (connectedWallet:string) => {
+    if(OwnerAddress.toLowerCase() === connectedWallet.toLowerCase()) {
+      setUserIsOwner(true);
+    }
+    console.log('Hey John, you are the owner of this contract!');
   }
 
   return (

@@ -5,7 +5,7 @@ const Fight:React.FC = () => {
     return (
         <div style={{
             width: '100%',
-            height: '100%',
+
             textAlign: 'center'
         }}>
             <Typography variant="h3" sx={{
@@ -15,6 +15,7 @@ const Fight:React.FC = () => {
             }}>
                 Challenge a Billionaire!
             </Typography>
+
         </div>
     )
 }
