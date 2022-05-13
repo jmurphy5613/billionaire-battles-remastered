@@ -1,9 +1,21 @@
-
+import { Typography } from '@mui/material';
 
 
 const Fight:React.FC = () => {
     return (
-        <div></div>
+        <div style={{
+            width: '100%',
+            height: '100%',
+            textAlign: 'center'
+        }}>
+            <Typography variant="h3" sx={{
+                marginTop: '3rem',
+                color: '#ffffff',
+                fontFamily: 'Poppins'
+            }}>
+                Challenge a Billionaire!
+            </Typography>
+        </div>
     )
 }
 

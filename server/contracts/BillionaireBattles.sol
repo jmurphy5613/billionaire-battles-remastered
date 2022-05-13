@@ -23,7 +23,7 @@ contract BillionaireBattles is ERC721 {
         string[] memory attack3Names,
         uint[] memory attack1Damages,
         uint[] memory attack2Damages,
-        uint[] memory attack3Damages
+        uint[] memory attack3Damages,
     ) ERC721("Billionaire Battles", "BBT") {
         console.log('hi');
         listingTransactionFee = 5;
@@ -66,6 +66,17 @@ contract BillionaireBattles is ERC721 {
         uint attackDamageAttack2;
         uint attackDamageAttack3;
     }
+
+    struct boss {
+        string name;
+        string description;
+        string image;
+        uint256 health;
+        uint256 maxHealth;
+        uint256 attackDamage;
+    }
+
+    mapping(uint => boss) bosses;
 
     mapping(uint => character) characters;
 
@@ -186,5 +197,11 @@ contract BillionaireBattles is ERC721 {
     }
 
     //proifle getter functions
+
+
+    //boss minting function
+    function mintNewBoss(string name, string description, uint256 attack, string image) public {
+
+    }
 
 }
