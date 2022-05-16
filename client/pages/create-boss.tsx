@@ -16,6 +16,7 @@ const CreateBoss = () => {
     const [image, setImage] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [attack, setAttack] = useState<number>(0);
+    const [health, setHealth] = useState<number>(0);
 
     const onSubmit = async () => {
         const etherConnection = window.ethereum;
@@ -24,8 +25,8 @@ const CreateBoss = () => {
             const provider = new ethers.providers.Web3Provider(etherConnection);
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
-
-            await contract.mintNewBoss(name, description, attack, image);
+            //string _name, string _description, uint256 _attack, string _image, uint _health
+            await contract.mintNewBoss(name, description, attack, image, health);
         }
     }
 
@@ -63,6 +64,10 @@ const CreateBoss = () => {
                     marginBottom: '1rem'
                 }}/>
                 <input placeholder="Attack Damage" onChange={e => setAttack(e.target.value)} type="number" style={{
+                    width: '20%',
+                    marginBottom: '1rem'
+                }}/>
+                <input placeholder="Health" onChange={e => setHealth(e.target.value)} type="number" style={{
                     width: '20%',
                     marginBottom: '1rem'
                 }}/>

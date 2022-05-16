@@ -11,7 +11,6 @@ contract BillionaireBattles is ERC721 {
     uint listingTransactionFee; //fee taken from each listing
     uint reviveCost;
     uint numberOfCharacters = 0;
-    uint numberOfBosses = 0;
 
     constructor(
         string[] memory names, 
@@ -201,9 +200,9 @@ contract BillionaireBattles is ERC721 {
 
 
     //boss minting function
-    function mintNewBoss(string _name, string _description, uint256 _attack, string _image, uint _health) public {
-        numberOfBosses++;
-        uint id = numberOfBosses;
+    function mintNewBoss(string memory _name, string memory _description, uint256 _attack, string memory _image, uint _health) public {
+        numberOfCharacters++;
+        uint id = numberOfCharacters;
 
         bosses[id] = boss({
             name: _name,
@@ -213,7 +212,7 @@ contract BillionaireBattles is ERC721 {
             maxHealth: _health,
             attackDamage: _attack
         });
-        _safeMint(numberOfBosses, address(this));
+        _safeMint(msg.sender, numberOfCharacters);
     }
 
 }
