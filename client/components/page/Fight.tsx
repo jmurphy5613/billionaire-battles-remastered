@@ -1,5 +1,7 @@
 import { Typography } from '@mui/material';
 
+import BossGrid from '../boss-grid/BossGrid';
+
 
 const Fight:React.FC = () => {
     return (
@@ -7,15 +9,15 @@ const Fight:React.FC = () => {
             width: '100%',
             textAlign: 'center'
         }}>
-            <Typography variant="h3" sx={{
+            {/* <Typography variant="h3" sx={{
                 marginTop: '3rem',
                 color: '#ffffff',
                 fontFamily: 'Inter',
                 fontWeight: '500'
             }}>
                 Challenge a Billionaire!
-            </Typography>
-
+            </Typography> */}
+            <BossGrid />
         </div>
     )
 }
