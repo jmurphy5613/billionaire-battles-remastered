@@ -60,8 +60,8 @@ const Home = () => {
       }}>
           { userIsOwner ?
             <> 
-              <HomepageOwnerNav title={"Create Boss"} url={"create-boss"} /> 
-              <HomepageOwnerNav title={"Create Character"} url={"create-character"} />
+              <HomepageOwnerNav title={"Create Boss"} url={"http://localhost:3000/create-boss"} /> 
+              <HomepageOwnerNav title={"Create Character"} url={"http://localhost:3000/create-character"} />
               <HomepageOwnerNav title={"View Smart Contract"} url={`https://rinkeby.etherscan.io/address/${BillionaireBattlesAddress}`} />
             </>
             : <HomepageOwnerNav title={"View Smart Contract"} url={`https://rinkeby.etherscan.io/address/${BillionaireBattlesAddress}`} />

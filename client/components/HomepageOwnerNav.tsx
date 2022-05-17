@@ -7,8 +7,9 @@ interface HomepageOwnerNavProps {
 }
 
 const HomepageOwnerNav:React.FC<HomepageOwnerNavProps> = ({ title, url }) => {
+
     return (
-        <a href={`/${url}`}>
+        <a href={`${url}`} target="_blank">
             <Button variant="contained" sx={{
                 backgroundColor: '#6c56d2',
                 color: '#ffffff',
