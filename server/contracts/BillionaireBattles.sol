@@ -215,4 +215,16 @@ contract BillionaireBattles is ERC721 {
         _safeMint(msg.sender, numberOfCharacters);
     }
 
+    function getBossIds() public view returns (uint[] memory ids) {
+        uint currentIndex = 0;
+        uint[] memory bossList = new uint[](numberOfCharacters) ;
+        for(uint i = 0; i < numberOfCharacters; i++) {
+            if(bosses[i].maxHealth != 0) {
+                ids[currentIndex] = i;
+                currentIndex++;
+            }
+        }
+        return bossList;
+    }
+
 }
