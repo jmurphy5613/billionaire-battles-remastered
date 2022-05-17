@@ -5,8 +5,9 @@ import Typed from 'react-typed';
 
 import ConnectedStatus from '../components/ConnectedStatus';
 import HomepageOwnerNav from '../components/HomepageOwnerNav';
+import SmartContractWallet from '../components/SmartContractWallet';
 
-import { OwnerAddress } from '../helpers/addresses';
+import { BillionaireBattlesAddress, OwnerAddress } from '../helpers/addresses';
 
 declare var window: any;
 
@@ -57,11 +58,13 @@ const Home = () => {
         height: '100vh',
         width: '100vw',
       }}>
-          { userIsOwner && 
+          { userIsOwner ?
             <> 
               <HomepageOwnerNav title={"Create Boss"} url={"create-boss"} /> 
               <HomepageOwnerNav title={"Create Character"} url={"create-character"} />
-            </> 
+              <HomepageOwnerNav title={"View Smart Contract"} url={`https://rinkeby.etherscan.io/address/${BillionaireBattlesAddress}`} />
+            </>
+            : <HomepageOwnerNav title={"View Smart Contract"} url={`https://rinkeby.etherscan.io/address/${BillionaireBattlesAddress}`} />
           }
           <ConnectedStatus connected={walletIsConnected} />
           <div style={{
