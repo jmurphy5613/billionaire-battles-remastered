@@ -228,8 +228,10 @@ contract BillionaireBattles is ERC721 {
         }
         return bossList;
     }
-    function getThirdIndex() public view returns (boss memory thing) {
-        return bosses[3];
+
+    function getBossStringDataById(uint id) public view returns(boss memory current) {
+        return bosses[id];
     }
+
 
 }

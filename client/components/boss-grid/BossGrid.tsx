@@ -8,6 +8,8 @@ import BillionaireBattles from '../../../server/artifacts/contracts/BillionaireB
 
 import { ethers } from 'ethers';
 
+import { hexToInt } from '../../helpers/conversions';
+
 declare var window:any;
 
 const BossGrid = () => {
@@ -25,8 +27,22 @@ const BossGrid = () => {
                 const signer = provider.getSigner();
                 const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
                 
-                const ids = await contract.getBossIds();
-                console.log(ids);
+                const nftIndexesHex = await contract.getBossIds();
+                console.log(nftIndexesHex);
+                //convert the values to integer form
+                const nftIndexesInt = [];
+                if(nftIndexesHex.length > 0) {
+                    for(let i = 0; i < nftIndexesHex.length; i++) {
+                        nftIndexesInt.push(parseInt(nftIndexesHex[i], 16));
+                    }
+                    console.log(nftIndexesInt);
+                }
+                //fetch data for indexes found
+                for(let i = 0; i < nftIndexesInt.length; i++) {
+                    const current = await contract.getBossStringDataById(nftIndexesInt[i]);
+                    console.log(hexToInt( current[6]));
+
+                }
             }
             setDataFetched(true);
         }
