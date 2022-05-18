@@ -18,6 +18,10 @@ async function main() {
     console.log('Deployed Contract to: ', battles.address);
     await battles.mintItemById(0);
     await battles.mintItemById(1);
+
+    await battles.mintNewBoss("test", "test", 10, "test", 20);
+    const third = await battles.getBossIds();
+    console.log(third);
 }
 
 

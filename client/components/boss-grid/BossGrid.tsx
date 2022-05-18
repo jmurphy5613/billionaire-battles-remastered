@@ -25,8 +25,10 @@ const BossGrid = () => {
                 const signer = provider.getSigner();
                 const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
                 
-                await contract.getBossIds();
+                const ids = await contract.getBossIds();
+                console.log(ids);
             }
+            setDataFetched(true);
         }
         fetchData();
     }, [])

@@ -68,6 +68,7 @@ contract BillionaireBattles is ERC721 {
     }
 
     struct boss {
+        address owner;
         string name;
         string description;
         string image;
@@ -205,6 +206,7 @@ contract BillionaireBattles is ERC721 {
         uint id = numberOfCharacters;
 
         bosses[id] = boss({
+            owner: msg.sender,
             name: _name,
             description: _description,
             image: _image,
@@ -218,13 +220,16 @@ contract BillionaireBattles is ERC721 {
     function getBossIds() public view returns (uint[] memory ids) {
         uint currentIndex = 0;
         uint[] memory bossList = new uint[](numberOfCharacters) ;
-        for(uint i = 0; i < numberOfCharacters; i++) {
-            if(bosses[i].maxHealth != 0) {
-                ids[currentIndex] = i;
+        for(uint i = 1; i <= numberOfCharacters; i++) {
+            if(bosses[i].health > 0) {
+                bossList[currentIndex] = i;
                 currentIndex++;
             }
         }
         return bossList;
+    }
+    function getThirdIndex() public view returns (boss memory thing) {
+        return bosses[3];
     }
 
 }
