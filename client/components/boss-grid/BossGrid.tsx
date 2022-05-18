@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import BossGridItem from "./BossGridItem";
+import GridCounter from "../GridCounter";
 
 import { BillionaireBattlesAddress } from "../../helpers/addresses";
 import BillionaireBattles from '../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json'
@@ -11,7 +12,7 @@ import { ethers } from 'ethers';
 
 import { hexToInt } from '../../helpers/conversions';
 
-import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 declare var window:any;
 
@@ -69,21 +70,34 @@ const BossGrid = () => {
             flexDirection: 'column'
         }}>
             {/* This is the area for navigation between bosses */}
-            <div style={{
+            <Box sx={{
                 position: 'absolute',
                 right: '1.5rem',
                 top: '50%',
+                '&:hover': {
+                    cursor: 'pointer'
+                },
             }}>
-                <ChevronRightIcon htmlColor="#ffffff" fontSize="large" />
-            </div>
-            <div style={{
+                <ChevronRightIcon htmlColor="#ffffff" fontSize="large" onClick={e => {
+                    if(id+1 < numberOfBosses) {
+                        setId(id+1);
+                    }
+                }} />
+            </Box>
+            <Box sx={{
                 position: 'absolute',
                 left: '1.5rem',
                 top: '50%',
-
+                '&:hover': {
+                    cursor: 'pointer'
+                }
             }}>
-                <ChevronLeftIcon htmlColor="#ffffff" fontSize="large" />
-            </div>
+                <ChevronLeftIcon htmlColor="#ffffff" fontSize="large" onClick={e => {
+                    if(!id == 0) {
+                        setId(id-1);
+                    }
+                }} />
+            </Box>
             {/*
             Object Format:
             0. wallet
@@ -108,11 +122,7 @@ const BossGrid = () => {
                     attackDamage={bosses[id][6]}
                 />}
             </div>
-            <Typography variant="h3" sx={{
-                color: '#ffffff',
-            }}>
-                {`${id+1}/${numberOfBosses}`}
-            </Typography>
+            { dataFetched && <GridCounter currentId={id} numberOfBosses={numberOfBosses} />}
         </div>
     )
 }
