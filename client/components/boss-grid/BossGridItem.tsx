@@ -1,3 +1,13 @@
+import { Typography } from '@mui/material';
+
+import { useState } from 'react';
+
+import ProfileStatsGrid from '../profile-stats-grid/ProfileStatsGrid';
+import OwnerUrl from '../OwnerUrl';
+import ChallengeButton from '../ChallengeButton';
+
+import { OwnerAddress } from '../../helpers/addresses';
+
 
 
 interface bossGridItemProps {
@@ -6,7 +16,9 @@ interface bossGridItemProps {
     maxHealth: number,
     description: string,
     image: string,
-    wallet: string
+    wallet: string,
+    tokenId: number,
+    attackDamage: number
 }
 
 const BossGridItem:React.FC<bossGridItemProps> = ({
@@ -15,16 +27,55 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
     maxHealth,
     description,
     image,
-    wallet
+    wallet,
+    tokenId,
+    attackDamage
 }) => {
+
+    const [abilities, setAbilites] = useState([{
+        name: 'Primary Attack',
+        nickname: 'iPhone Throw',
+        damage: attackDamage
+    }])
+
     return (
         <div style={{
             height: '450px',
-            width: '60%',
+            width: '100vw',
             display: 'flex',
-            border: '1px solid white'
+            justifyContent: 'center'
         }}>
+            <div style={{
+                height: 'auto',
+                width: '450px',
+                borderRadius: '2rem',
+                backgroundImage: `url(${image})`,    
+                backgroundSize: 'cover'
+            }} />
+            <div style={{
+                height: '100%',
+                marginLeft: '1rem',
+                width: '475px',
+                textAlign: 'left'
+            }}>
+                <Typography variant="h3" sx={{
+                    fontFamily: 'Inter',
+                    color: '#ffffff',
+                    fontWeight: '700',
+                }}>
+                    {`${name} #${tokenId}`}
+                </Typography>
 
+                <Typography variant="h4" sx={{
+                    color: 'rgb(62, 67, 138)',
+                    fontSize: '1.5rem',
+                }}>
+                    Billionaire Battles
+                </Typography>
+                <OwnerUrl owner={OwnerAddress} />
+                <ProfileStatsGrid items={abilities} />
+                <ChallengeButton />
+            </div>
         </div>
     )
 }

@@ -10,7 +10,7 @@ const OwnerUrl:React.FC<ownerUrlProps> = ({owner}) => {
         <Typography variant="h5" sx={{
             fontSize: '1rem',
             fontFamily: "Ubuntu",
-            color: '#b2bac2'
+            color: '#b2bac2',
         }}>
            {`Owned by `}         
             <a href={`https://rinkeby.etherscan.io/search?f=0&q=${owner}`} style={{

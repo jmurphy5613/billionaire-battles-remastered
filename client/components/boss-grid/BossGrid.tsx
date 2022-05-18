@@ -11,13 +11,17 @@ import { ethers } from 'ethers';
 
 import { hexToInt } from '../../helpers/conversions';
 
+import { Typography } from '@mui/material';
+
 declare var window:any;
 
 const BossGrid = () => {
 
     const [id, setId] = useState(0);
+    const [numberOfBosses, setNumberOfBosses] = useState(0);
     const [bosses, setBosses] = useState<any>([]);
     const [dataFetched, setDataFetched] = useState(false);
+    const [tokenIds, setTokenIds] = useState([]);
 
 
     const fetchBosses = async () => {
@@ -43,8 +47,10 @@ const BossGrid = () => {
                 //current[1] is the name
                 if(!current[1] == "") {
                     bosses[i] = (current);
+                    tokenIds[i] = nftIndexesInt[i];
                 }
             }
+            setNumberOfBosses(bosses.length);
         }
         setDataFetched(true);
     }
@@ -54,7 +60,14 @@ const BossGrid = () => {
     }, [])
 
     return (
-        <div>
+        <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+        }}>
             {/* This is the area for navigation between bosses */}
             <div style={{
                 position: 'absolute',
@@ -82,15 +95,24 @@ const BossGrid = () => {
             6. attack
             
             */}
-            { dataFetched && <BossGridItem 
-                key={id} 
-                name={bosses[id][0]} 
-                health={hexToInt(bosses[id][4])} 
-                maxHealth={hexToInt(bosses[id][5])} 
-                description={bosses[id][2]} 
-                image={bosses[id][3]} 
-                wallet={bosses[id][0]}
-            />}
+            <div>
+                { dataFetched && <BossGridItem 
+                    key={id} 
+                    name={bosses[id][1]} 
+                    health={hexToInt(bosses[id][4])} 
+                    maxHealth={hexToInt(bosses[id][5])} 
+                    description={bosses[id][2]} 
+                    image={bosses[id][3]} 
+                    wallet={bosses[id][0]}
+                    tokenId={tokenIds[id]}
+                    attackDamage={bosses[id][6]}
+                />}
+            </div>
+            <Typography variant="h3" sx={{
+                color: '#ffffff',
+            }}>
+                {`${id+1}/${numberOfBosses}`}
+            </Typography>
         </div>
     )
 }
