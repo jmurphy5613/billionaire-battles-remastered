@@ -1,9 +1,14 @@
 import { Typography } from '@mui/material';
 
+import { useState } from 'react';
+
 import BossGrid from '../boss-grid/BossGrid';
 
 
 const Fight:React.FC = () => {
+
+    const [bossSelected, setBossSelected] = useState();
+
     return (
         <div style={{
             width: '100%',
@@ -18,7 +23,7 @@ const Fight:React.FC = () => {
             }}>
                 Challenge a Billionaire!
             </Typography> */}
-            <BossGrid />
+            <BossGrid setBossSelected={setBossSelected} />
         </div>
     )
 }

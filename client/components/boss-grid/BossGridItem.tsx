@@ -5,10 +5,11 @@ import { useState } from 'react';
 import ProfileStatsGrid from '../profile-stats-grid/ProfileStatsGrid';
 import OwnerUrl from '../OwnerUrl';
 import ChallengeButton from '../ChallengeButton';
+import SelectBillionairePopup from '../SelectBillionairePopup';
 
 import { OwnerAddress } from '../../helpers/addresses';
 
-
+type setBossSelected = () => void;
 
 interface bossGridItemProps {
     name: string,
@@ -19,7 +20,8 @@ interface bossGridItemProps {
     wallet: string,
     tokenId: number,
     attackDamage: number,
-    attackName: string
+    attackName: string,
+    setBossSelected: setBossSelected
 }
 
 const BossGridItem:React.FC<bossGridItemProps> = ({
@@ -31,7 +33,8 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
     wallet,
     tokenId,
     attackDamage,
-    attackName
+    attackName,
+    setBossSelected
 }) => {
 
     const [abilities, setAbilites] = useState([{
@@ -76,7 +79,7 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
                 </Typography>
                 <OwnerUrl owner={OwnerAddress} />
                 <ProfileStatsGrid items={abilities} />
-                <ChallengeButton />
+                <SelectBillionairePopup />
             </div>
         </div>
     )

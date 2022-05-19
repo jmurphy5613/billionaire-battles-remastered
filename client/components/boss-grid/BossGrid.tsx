@@ -16,7 +16,13 @@ import { Box } from '@mui/material';
 
 declare var window:any;
 
-const BossGrid = () => {
+type setBossFunction = () => void;
+
+interface bossGridProps {
+    setBossSelected: setBossFunction
+}
+
+const BossGrid:React.FC<bossGridProps> = ({ setBossSelected }) => {
 
     const [id, setId] = useState(0);
     const [numberOfBosses, setNumberOfBosses] = useState(0);
@@ -122,6 +128,7 @@ const BossGrid = () => {
                     tokenId={tokenIds[id]}
                     attackDamage={bosses[id][7]}
                     attackName={bosses[id][4]}
+                    setBossSelected={setBossSelected}
                 />}
             </div>
             {console.log(bosses)}

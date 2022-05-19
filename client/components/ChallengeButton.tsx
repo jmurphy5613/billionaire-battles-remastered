@@ -4,7 +4,6 @@ import { Button } from "@mui/material"
 const ChallengeButton = () => {
     
     return (
-        <a href={``} target="_blank">
         <Button variant="contained" sx={{
             backgroundColor: '#e53935',
             color: '#ffffff',
@@ -19,7 +18,6 @@ const ChallengeButton = () => {
         }}>
             Challenge
         </Button>
-    </a>
     )
 }
 
