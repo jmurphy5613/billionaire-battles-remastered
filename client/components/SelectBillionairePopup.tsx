@@ -3,16 +3,22 @@ import MarketItemGrid from "./nft-grid/MarketItemGrid";
 
 import { Button, Typography } from '@mui/material';
 
+import { ethers } from "ethers";
+
 import { useEffect } from "react";
+
+import { BillionaireBattlesAddress } from '../helpers/addresses';
+import BillionaireBattles from '../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
+
 
 declare var window:any;
 
 const SelectBillionairePopup = () => {
 
     useEffect(() => {
-        const ethereumConnection = window.ethereum;
+        const etherConnection = window.ethereum;
 
-        if(ethereumConnection) {
+        if(etherConnection) {
             const provider = new ethers.providers.Web3Provider(etherConnection);
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
