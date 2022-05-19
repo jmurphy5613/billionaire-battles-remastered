@@ -22,7 +22,7 @@ To run tests, run the following commands:
 
 This command creates a local blockchain, with some wallets that can be used to run tests on your smart contract
 ```bash
-npx hardhat node
+  npx hardhat node
 ```
 
 After writing a test in javascript, run this command to see the transaction history
@@ -39,6 +39,6 @@ If you have any feedback, please reach out to me at jmurphy5613@gmail.com
 
 ## Acknowledgements
 
- - [Buildspace](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [Buildspace](https://buildspace.so/)
  - [Nader Dabit](https://www.youtube.com/c/naderdabit)
 
