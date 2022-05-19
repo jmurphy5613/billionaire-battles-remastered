@@ -1,9 +1,24 @@
-import Popup from "reactjs-popup"
-import ChallengeButton from "./ChallengeButton";
+import Popup from "reactjs-popup";
+import MarketItemGrid from "./nft-grid/MarketItemGrid";
 
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material';
+
+import { useEffect } from "react";
+
+declare var window:any;
 
 const SelectBillionairePopup = () => {
+
+    useEffect(() => {
+        const ethereumConnection = window.ethereum;
+
+        if(ethereumConnection) {
+            const provider = new ethers.providers.Web3Provider(etherConnection);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
+        }
+    }, [])
+
     return (
         <Popup
             modal
@@ -26,17 +41,27 @@ const SelectBillionairePopup = () => {
             <div style={{
                 width: '100vw',
                 height: '100vh',
-                backgroundColor: 'rgba(0,0,0,0.5)',
+                backgroundColor: 'rgba(0,0,0,0.8)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
                 <div style={{
-                    width: '30vw',
-                    height: '30vh',
-                    background: '#00000f'
+                    width: '60vw',
+                    height: '60vh',
+                    background: '#00000f',
+                    borderRadius: '5px',
+                    textAlign: 'center'
                 }}>
-
+                    <Typography variant="h3" sx={{
+                        fontFamily: 'Inter',
+                        color: '#ffffff',
+                        fontWeight: '600',
+                        fontSize: '2rem'
+                    }}>
+                        Choose your Billionaire
+                    </Typography>
+                    <MarketItemGrid />
                 </div>
             </div>
         </Popup>
