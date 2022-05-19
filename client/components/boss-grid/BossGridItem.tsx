@@ -18,7 +18,8 @@ interface bossGridItemProps {
     image: string,
     wallet: string,
     tokenId: number,
-    attackDamage: number
+    attackDamage: number,
+    attackName: string
 }
 
 const BossGridItem:React.FC<bossGridItemProps> = ({
@@ -29,12 +30,13 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
     image,
     wallet,
     tokenId,
-    attackDamage
+    attackDamage,
+    attackName
 }) => {
 
     const [abilities, setAbilites] = useState([{
         name: 'Primary Attack',
-        nickname: 'iPhone Throw',
+        nickname: attackName,
         damage: attackDamage
     }])
 

@@ -104,24 +104,27 @@ const BossGrid = () => {
             1. name
             2. description
             3. image
-            4. health
-            5. maxHealth
-            6. attack
+            5. health
+            6. maxHealth
+            7. attack
+            4. attackName
             
             */}
             <div>
                 { dataFetched && <BossGridItem 
                     key={id} 
                     name={bosses[id][1]} 
-                    health={hexToInt(bosses[id][4])} 
-                    maxHealth={hexToInt(bosses[id][5])} 
+                    health={hexToInt(bosses[id][5])} 
+                    maxHealth={hexToInt(bosses[id][6])} 
                     description={bosses[id][2]} 
                     image={bosses[id][3]} 
                     wallet={bosses[id][0]}
                     tokenId={tokenIds[id]}
-                    attackDamage={bosses[id][6]}
+                    attackDamage={bosses[id][7]}
+                    attackName={bosses[id][4]}
                 />}
             </div>
+            {console.log(bosses)}
             { dataFetched && <GridCounter currentId={id} numberOfBosses={numberOfBosses} />}
         </div>
     )

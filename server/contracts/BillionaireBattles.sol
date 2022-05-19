@@ -4,8 +4,6 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-import "hardhat/console.sol";
- 
 contract BillionaireBattles is ERC721 {
 
     uint listingTransactionFee; //fee taken from each listing
@@ -25,7 +23,6 @@ contract BillionaireBattles is ERC721 {
         uint[] memory attack2Damages,
         uint[] memory attack3Damages
     ) ERC721("Billionaire Battles", "BBT") {
-        console.log('hi');
         listingTransactionFee = 5;
         reviveCost = 5;
         for(uint i = 0; i < 2; i++) {
@@ -72,6 +69,7 @@ contract BillionaireBattles is ERC721 {
         string name;
         string description;
         string image;
+        string attackName;
         uint256 health;
         uint256 maxHealth;
         uint256 attackDamage;
@@ -201,7 +199,7 @@ contract BillionaireBattles is ERC721 {
 
 
     //boss minting function
-    function mintNewBoss(string memory _name, string memory _description, uint256 _attack, string memory _image, uint _health) public {
+    function mintNewBoss(string memory _name, string memory _description, uint256 _attack, string memory _image, uint _health, string memory _attackName) public {
         numberOfCharacters++;
         uint id = numberOfCharacters;
 
@@ -212,7 +210,8 @@ contract BillionaireBattles is ERC721 {
             image: _image,
             health: _health,
             maxHealth: _health,
-            attackDamage: _attack
+            attackDamage: _attack,
+            attackName: _attackName
         });
         _safeMint(msg.sender, numberOfCharacters);
     }
