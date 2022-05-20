@@ -37,16 +37,17 @@ const SelectBillionairePopup = () => {
                     height: '80vh',
                     background: '#00000f',
                     borderRadius: '5px',
-                    textAlign: 'center',
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    alignItems: 'center'
                 }}>
                     <Typography variant="h3" sx={{
                         fontFamily: 'Inter',
                         color: '#ffffff',
                         fontWeight: '600',
                         fontSize: '2rem',
-                        marginTop: '3rem'
+                        marginTop: '3rem',
+                        marginBottom: '3rem'
                     }}>
                         Choose your Billionaire
                     </Typography>

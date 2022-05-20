@@ -84,8 +84,8 @@ const OwnedCharacterGridSmall = () => {
     return (
         <div style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            width: '65%',
+            gridTemplateColumns: '1fr 1fr',
+            width: '80%',
             gridGap: '3rem',
         }}>
             {ownedBillionaires.map(element => {

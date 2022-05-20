@@ -1,4 +1,4 @@
-
+import { Typography } from "@mui/material";
 
 interface OwnedCharacterSmallGridItemProps {
     name: string,
@@ -7,17 +7,19 @@ interface OwnedCharacterSmallGridItemProps {
     maxHealth: number
 }
 
-const OwnedCharacterSmallGridItem:React.FC<OwnedCharacterSmallGridItemProps> = ({ }) => {
+const OwnedCharacterSmallGridItem:React.FC<OwnedCharacterSmallGridItemProps> = ({ name }) => {
     
 
     return (
         <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            width: '60%',
-            gridGap: '3rem',
+            
         }}>
+            <Typography variant="h5" sx={{
+                color: '#ffffff',
 
+            }}>
+                {name}
+            </Typography>
         </div>
     )
 }
