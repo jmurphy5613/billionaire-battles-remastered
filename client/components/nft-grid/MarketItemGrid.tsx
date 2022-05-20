@@ -23,7 +23,7 @@ const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems, isMarketplace}) 
             {gridItems.map(element => {
                 {console.log(element.id)}
                 return (
-                    <MarketItemGridItem id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} isMarketplaceItem={isMarketplace} />
+                    <MarketItemGridItem key={element.id} id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} isMarketplaceItem={isMarketplace} />
                 )
             })}
         </div> 

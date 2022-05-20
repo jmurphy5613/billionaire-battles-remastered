@@ -9,7 +9,7 @@ const SeeStats:React.FC<props> = ({id}) => {
 
 
     return (
-        <a target="_blank" href={`/dashboard/${id}`}>
+        <a href={`/dashboard/${id}`}>
             <Typography variant="h2" sx={{
                 position: 'absolute',
                 color: '#ffffff',
