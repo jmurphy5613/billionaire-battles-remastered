@@ -23,6 +23,7 @@ async function main() {
     await battles.mintNewBoss("Peter Thiel", "Cofounder of Paypal and Palantier, and writer of Zero to One", 78, "https://image.cnbcfm.com/api/v1/image/106723915-1601485640846-gettyimages-1183198454-JAPAN_THIEL.jpeg?v=1627491962", 900, "Another long lecture");
     const third = await battles.getBossIds();
     console.log(third);
+
 }
 
 

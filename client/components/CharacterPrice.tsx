@@ -25,9 +25,7 @@ const CharacterPrice:React.FC<characterPriceProps> = ({tokenId}) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
-            contract.getPriceById(id).then((price:any) => {
-                setPrice(hexToInt(price));
-            })
+
         }
     }
 

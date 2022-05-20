@@ -5,6 +5,8 @@ import { ethers } from 'ethers';
 import { BillionaireBattlesAddress } from '../helpers/addresses';
 import BillionaireBattles from '../public/BillionaireBattles.json';
 
+import { hexToInt } from '../helpers/conversions';
+
 
 interface buyButtonProps {
     tokenId: number,
@@ -25,14 +27,13 @@ const BuyButton:React.FC<buyButtonProps> = ({ tokenId, marginLeft }) => {
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
             let priceValue = 0;
-            contract.getPriceById(tokenId).then((price:any) => {
+            await contract.getPriceById(tokenId).then((price:any) => {
+                console.log('price:', price)
                 priceValue = price; 
             })
 
-            const etherValue = ethers.utils.parseUnits(priceValue.toString(), 'ethers');
-
             await contract.createMarketSale(tokenId, {
-                value: etherValue
+                value: priceValue
             });
         }
     }
