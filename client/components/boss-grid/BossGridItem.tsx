@@ -7,12 +7,12 @@ import { useState } from 'react';
 
 import ProfileStatsGrid from '../profile-stats-grid/ProfileStatsGrid';
 import OwnerUrl from '../OwnerUrl';
-import ChallengeButton from '../ChallengeButton';
 import SelectBillionairePopup from '../SelectBillionairePopup';
 
 import { OwnerAddress } from '../../helpers/addresses';
 
-type setBossSelected = () => void;
+type setBossSelected = (id:number) => void;
+type setCharacterSelected = (id:number) => void;
 
 interface bossGridItemProps {
     name: string,
@@ -24,7 +24,9 @@ interface bossGridItemProps {
     tokenId: number,
     attackDamage: number,
     attackName: string,
-    setBossSelected: setBossSelected
+    setBossSelected: setBossSelected,
+    setCharacterSelected: setCharacterSelected,
+    id: number
 }
 
 const BossGridItem:React.FC<bossGridItemProps> = ({
@@ -37,7 +39,9 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
     tokenId,
     attackDamage,
     attackName,
-    setBossSelected
+    setBossSelected,
+    setCharacterSelected,
+    id
 }) => {
 
     const [abilities, setAbilites] = useState([{
@@ -82,7 +86,7 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
                 </Typography>
                 <OwnerUrl owner={OwnerAddress} />
                 <ProfileStatsGrid items={abilities} />
-                <SelectBillionairePopup />
+                <SelectBillionairePopup id={id} setBossSelected={setBossSelected} setCharactedSelected={setCharacterSelected}  />
             </div>
         </div>
     )

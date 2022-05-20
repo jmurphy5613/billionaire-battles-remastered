@@ -24,8 +24,15 @@ const BuyButton:React.FC<buyButtonProps> = ({ tokenId, marginLeft }) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
+            let priceValue = 0;
+            contract.getPriceById(tokenId).then((price:any) => {
+                priceValue = price; 
+            })
+
+            const etherValue = ethers.utils.parseUnits(priceValue.toString(), 'ethers');
+
             await contract.createMarketSale(tokenId, {
-                value: 10
+                value: etherValue
             });
         }
     }

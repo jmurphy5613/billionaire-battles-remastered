@@ -147,7 +147,7 @@ const ItemProfile = () => {
                     display: 'flex',
                     width: '100%'
                 }}>
-                    <CharacterPrice />
+                    <CharacterPrice tokenId={id} />
                     { !userIsOwner && <BuyButton marginLeft={3} tokenId={id} /> }
                     
                 </div>

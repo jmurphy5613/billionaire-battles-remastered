@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 
 import BillionaireBattles from '../public/BillionaireBattles.json';
 import { BillionaireBattlesAddress } from '../helpers/addresses';
+import { hexToInt } from "../helpers/conversions";
 
 import { Typography } from '@mui/material';
 
@@ -24,13 +25,13 @@ const CharacterPrice:React.FC<characterPriceProps> = ({tokenId}) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
-            // contract.getPriceById(id).then((price:any) => {
-            //     setPrice(parseInt(price, 10));
-            // })
+            contract.getPriceById(id).then((price:any) => {
+                setPrice(hexToInt(price));
+            })
         }
     }
 
-    const [price, setPrice] = useState<number>(10);
+    const [price, setPrice] = useState<number>();
 
     useEffect(() => {
         const fetchPrice = async () => {

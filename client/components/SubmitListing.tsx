@@ -22,7 +22,9 @@ const SubmitListing:React.FC<submitListingProps> = ({ tokenId, price }) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
-            await contract.createMarketListing(tokenId, price);
+            const ethersPrice = ethers.utils.parseEther(price.toString());
+    
+            await contract.createMarketListing(tokenId, ethersPrice);
         }
     }
 

@@ -10,8 +10,14 @@ import OwnedCharacterSmallGridItem from './OwnedCharacterSmallGridItem';
 
 declare var window:any;
 
+type setCharactedSelected = (id:number) => void;
 
-const OwnedCharacterGridSmall = () => {
+
+interface OwnedCharacterGridSmallProps {
+    setCharactedSelected: setCharactedSelected
+}
+
+const OwnedCharacterGridSmall:React.FC<OwnedCharacterGridSmallProps> = ({ setCharactedSelected }) => {
 
     const [ownedBillionaires, setOwnedBillionaires] = useState([]);
     const [dataFetched, setDataFetched] = useState(false);
@@ -90,7 +96,7 @@ const OwnedCharacterGridSmall = () => {
         }}>
             {ownedBillionaires.map(element => {
                 return (
-                    <OwnedCharacterSmallGridItem name={element.name} health={element.health} maxHealth={element.maxHealth} image={element.image}  />
+                    <OwnedCharacterSmallGridItem setCharacterSelected={setCharactedSelected} id={element.id} name={element.name} health={element.health} maxHealth={element.maxHealth} image={element.image}  />
                 )
             })}
         </div>
