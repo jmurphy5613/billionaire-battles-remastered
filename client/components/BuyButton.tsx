@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { ethers } from 'ethers';
 
 import { BillionaireBattlesAddress } from '../helpers/addresses';
-import BillionaireBattles from '../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
+import BillionaireBattles from '../public/BillionaireBattles.json';
 
 
 interface buyButtonProps {

@@ -18,7 +18,7 @@ This project is a browser based nft game that pits famous billionaires against e
 ![alt text](https://i.imgur.com/CssWkUZ.png)
 ## Running Tests
 
-To run tests, run the following commands:
+To run tests, run the following commands:1111
 
 This command creates a local blockchain, with some wallets that can be used to run tests on your smart contract
 ```bash

@@ -4,10 +4,7 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 //contract imports
-import BillionaireBattles from '../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
-import { BillionaireBattlesAddress } from '../../helpers/addresses';
-
-//mui imports
+import BillionaireBattles from '../../public/BillionaireBattles.json';
 import { Typography, Box } from '@mui/material';
 
 import MarketItemGrid from '../nft-grid/MarketItemGrid';

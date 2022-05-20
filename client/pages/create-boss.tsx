@@ -4,7 +4,7 @@ import { Typography, Button } from '@mui/material';
 import { useState } from 'react';
 
 import { BillionaireBattlesAddress } from '../helpers/addresses';
-import BillionaireBattles from '../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
+import BillionaireBattles from '../public/BillionaireBattles.json';
 
 import HomeButton from '../components/HomeButton';
 

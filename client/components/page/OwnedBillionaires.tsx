@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { ethers } from 'ethers';
 
-import BillionaireBattles from '../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json';
+import BillionaireBattles from '../../public/BillionaireBattles.json';
 import { BillionaireBattlesAddress } from '../../helpers/addresses';
 
 //component imports

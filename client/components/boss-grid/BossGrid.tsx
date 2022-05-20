@@ -6,7 +6,7 @@ import BossGridItem from "./BossGridItem";
 import GridCounter from "../GridCounter";
 
 import { BillionaireBattlesAddress } from "../../helpers/addresses";
-import BillionaireBattles from '../../../server/artifacts/contracts/BillionaireBattles.sol/BillionaireBattles.json'
+import BillionaireBattles from '../../public/BillionaireBattles.json';
 
 import { ethers } from 'ethers';
 
