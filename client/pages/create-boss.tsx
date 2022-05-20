@@ -1,3 +1,6 @@
+//@ts-nocheck
+
+
 import { ethers } from 'ethers';
 
 import { Typography, Button } from '@mui/material';

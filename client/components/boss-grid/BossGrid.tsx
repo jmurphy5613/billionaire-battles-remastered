@@ -1,3 +1,6 @@
+//@ts-nocheck
+
+
 import { useState, useEffect } from "react";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';

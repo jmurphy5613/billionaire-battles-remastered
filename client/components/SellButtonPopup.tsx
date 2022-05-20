@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import Popup from "reactjs-popup";
 import SubmitListing from "./SubmitListing";
 import InputErrorCode from "./InputErrorCode";
