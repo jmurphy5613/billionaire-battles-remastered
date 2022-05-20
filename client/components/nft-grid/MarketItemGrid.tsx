@@ -7,7 +7,7 @@ interface props {
     isMarketplace: boolean,
 }
 
-const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems, isMarketplace}) => {
+const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems }) => {
 
     if(!gridItems) return <div></div>;
 
@@ -23,7 +23,7 @@ const MarketItemGrid:React.FC<props> = ({paddingTop, gridItems, isMarketplace}) 
             {gridItems.map(element => {
                 {console.log(element.id)}
                 return (
-                    <MarketItemGridItem key={element.id} id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth} isMarketplaceItem={isMarketplace} />
+                    <MarketItemGridItem key={element.id} id={element.id} name={element.name} img={element.img} health={element.health} maxHealth={element.maxHealth}  />
                 )
             })}
         </div> 

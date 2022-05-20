@@ -9,7 +9,6 @@ interface props {
     img: string,
     id: number,
     name: string,
-    isMarketplaceItem: boolean,
 }
 
 const MarketItemGridItem:React.FC<props> = ({
@@ -18,7 +17,6 @@ const MarketItemGridItem:React.FC<props> = ({
     img,
     id,
     name,
-    isMarketplaceItem,
 }) => {
 
     const [isBeingHovered, setIsBeingHovered] = useState(false);

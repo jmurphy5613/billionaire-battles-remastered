@@ -8,6 +8,7 @@ import { ethers } from 'ethers';
 
 //contract imports
 import BillionaireBattles from '../../public/BillionaireBattles.json';
+import { BillionaireBattlesAddress } from '../../helpers/addresses';
 import { Typography, Box } from '@mui/material';
 
 import MarketItemGrid from '../nft-grid/MarketItemGrid';
