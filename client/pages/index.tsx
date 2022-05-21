@@ -5,7 +5,6 @@ import Typed from 'react-typed';
 
 import ConnectedStatus from '../components/ConnectedStatus';
 import HomepageOwnerNav from '../components/HomepageOwnerNav';
-import SmartContractWallet from '../components/SmartContractWallet';
 
 import { BillionaireBattlesAddress, OwnerAddress } from '../helpers/addresses';
 
@@ -20,46 +19,32 @@ const Home = () => {
   const dispatch = useDispatch();
   const user = useSelector((state:any) => state.user.value);
 
-  const [connectedWallet, setConnectedWallet] = useState('');
   const [walletIsConnected, setWalletIsConnected] = useState(false);
   const [userIsOwner, setUserIsOwner] = useState(false);
-
-  useEffect( () => {
-      const checkConnection = async () => {
-        await checkConnection();
-      }
-      dispatch(setConnectWallet({ wallet: '000', nftsOwn: 10 }));
-  }, []);
 
   const Router = useRouter();
 
   const connectWallet = async () => {
+    if(walletIsConnected) {
+      Router.push('/dashboard');
+    }
 
-      if(walletIsConnected) {
-        Router.push('/dashboard');
-      }
+    let provider = window.ethereum;
 
-      let provider = window.ethereum;
-
-      if(typeof provider != 'undefined') {
-          await provider.request({ method: 'eth_requestAccounts' }).then((accounts:any) => {
-              setConnectedWallet(accounts);
-              setWalletIsConnected(true);
-              checkIfUserIsOwner(accounts[0]);
-              console.log(user);
-              
-          })
-      }
-      window.ethereum.on('accountsChanged', function(accounts:any) {
+    if(typeof provider != 'undefined') {
+      await provider.request({ method: 'eth_requestAccounts' }).then( async (accounts:any) => {
           setWalletIsConnected(true);
-          setConnectedWallet(accounts);
+          dispatch(setConnectWallet({ 
+            wallet: accounts[0],
+            isOwner: await checkIfUserIsOwner(accounts[0])
+          }));
       });
-
+    }
   }
 
   const checkIfUserIsOwner = async (connectedWallet:string) => {
     if(OwnerAddress.toLowerCase() === connectedWallet.toLowerCase()) {
-      setUserIsOwner(true);
+      return true;
     }
     console.log('Hey John, you are the owner of this contract!');
   }
@@ -70,6 +55,7 @@ const Home = () => {
         height: '100vh',
         width: '100vw',
       }}>
+        {console.log(user)}
           { userIsOwner ?
             <> 
               <HomepageOwnerNav title={"Create Boss"} url={"http://localhost:3000/create-boss"} /> 
@@ -130,7 +116,6 @@ const Home = () => {
               }}>
                   {walletIsConnected ? 'Play Now' : 'Connect Wallet'}
               </Button>
-
           </div>
       </div>
   )

@@ -4,7 +4,7 @@ export const userSlice = createSlice({
     name: "user",
     initialState: { value: {
         wallet: "",
-        nftsOwn: 0
+        isOwner: false
     } },
     reducers: {
         setConnectWallet: (state, action) => {
