@@ -9,9 +9,17 @@ import SmartContractWallet from '../components/SmartContractWallet';
 
 import { BillionaireBattlesAddress, OwnerAddress } from '../helpers/addresses';
 
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setConnectWallet } from '../redux/features/user';
+
 declare var window: any;
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+  const user = useSelector((state:any) => state.user.value);
+
   const [connectedWallet, setConnectedWallet] = useState('');
   const [walletIsConnected, setWalletIsConnected] = useState(false);
   const [userIsOwner, setUserIsOwner] = useState(false);
@@ -20,6 +28,7 @@ const Home = () => {
       const checkConnection = async () => {
         await checkConnection();
       }
+      dispatch(setConnectWallet({ wallet: '000', nftsOwn: 10 }));
   }, []);
 
   const Router = useRouter();
@@ -37,12 +46,15 @@ const Home = () => {
               setConnectedWallet(accounts);
               setWalletIsConnected(true);
               checkIfUserIsOwner(accounts[0]);
+              console.log(user);
+              
           })
       }
       window.ethereum.on('accountsChanged', function(accounts:any) {
           setWalletIsConnected(true);
           setConnectedWallet(accounts);
       });
+
   }
 
   const checkIfUserIsOwner = async (connectedWallet:string) => {
