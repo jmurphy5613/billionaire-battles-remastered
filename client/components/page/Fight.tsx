@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import BossGrid from '../boss-grid/BossGrid';
+import BossInformation from '../combat/BossInformation';
 
 
 const Fight:React.FC = () => {
@@ -13,7 +14,12 @@ const Fight:React.FC = () => {
 
         return (
             <div>
-                
+                {/* This is the area for the boss */}
+                <BossInformation tokenId={nftsSelected.bossSelectedId} />
+                {/* This is the area for the Attack Choices */}
+
+                {/* This is the area for the character that is challenging */}
+
             </div>
         )
     }
