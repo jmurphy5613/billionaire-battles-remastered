@@ -11,9 +11,6 @@ import SelectBillionairePopup from '../SelectBillionairePopup';
 
 import { OwnerAddress } from '../../helpers/addresses';
 
-type setBossSelected = (id:number) => void;
-type setCharacterSelected = (id:number) => void;
-
 interface bossGridItemProps {
     name: string,
     health: number,
@@ -24,8 +21,6 @@ interface bossGridItemProps {
     tokenId: number,
     attackDamage: number,
     attackName: string,
-    setBossSelected: setBossSelected,
-    setCharacterSelected: setCharacterSelected,
     id: number
 }
 
@@ -39,8 +34,6 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
     tokenId,
     attackDamage,
     attackName,
-    setBossSelected,
-    setCharacterSelected,
     id
 }) => {
 
@@ -86,7 +79,7 @@ const BossGridItem:React.FC<bossGridItemProps> = ({
                 </Typography>
                 <OwnerUrl owner={OwnerAddress} />
                 <ProfileStatsGrid items={abilities} />
-                <SelectBillionairePopup id={id} setBossSelected={setBossSelected} setCharactedSelected={setCharacterSelected}  />
+                <SelectBillionairePopup id={tokenId} />
             </div>
         </div>
     )

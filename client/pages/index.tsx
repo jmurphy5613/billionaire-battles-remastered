@@ -20,7 +20,6 @@ const Home = () => {
   const user = useSelector((state:any) => state.user.value);
 
   const [walletIsConnected, setWalletIsConnected] = useState(false);
-  const [userIsOwner, setUserIsOwner] = useState(false);
 
   const Router = useRouter();
 
@@ -55,8 +54,7 @@ const Home = () => {
         height: '100vh',
         width: '100vw',
       }}>
-        {console.log(user)}
-          { userIsOwner ?
+          { user.isOwner ?
             <> 
               <HomepageOwnerNav title={"Create Boss"} url={"http://localhost:3000/create-boss"} /> 
               <HomepageOwnerNav title={"Create Character"} url={"http://localhost:3000/create-character"} />

@@ -1,9 +1,7 @@
 //@ts-nocheck
 
 
-import { Typography } from '@mui/material';
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import BossGrid from '../boss-grid/BossGrid';
 
@@ -31,7 +29,7 @@ const Fight:React.FC = () => {
             }}>
                 Challenge a Billionaire!
             </Typography> */}
-            <BossGrid setBossSelected={setBossSelected} setCharacterSelected={setCharacterSelected} />
+            <BossGrid />
         </div>
     )
 }

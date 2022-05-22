@@ -4,22 +4,34 @@ import ExitPopup from "./ExitPopup";
 
 import { Button, Typography } from '@mui/material';
 
-type setBossSelected = (id:number) => void; 
-type setCharacterSelected = (id:number) => void;
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setNftsSelected } from '../redux/features/fight';
+
 
 interface SelectBillionairePopupProps {
-    setBossSelected: setBossSelected,
     id: number,
-    setCharactedSelected: setCharacterSelected
 }
 
-const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ setBossSelected, id, setCharactedSelected }) => {
+const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ id }) => {
+
+    const dispatch = useDispatch();
+    const nftsSelected = useSelector((state:any) => state.nftsSelected.value);
+    console.log(id)
 
     return (
         <Popup
             modal
             trigger={        
-            <Button variant="contained" onClick={() => setBossSelected(id)} sx={{
+            <Button 
+            onClickCapture={() => {
+                console.log('hey');
+                dispatch(setNftsSelected({
+                    bossSelectedId: id,
+                    characterSelectedId: 0,
+                }))
+            }}
+            variant="contained" sx={{
                 backgroundColor: '#e53935',
                 color: '#ffffff',
                 fontFamily: 'Poppins, sans-serif',
@@ -43,6 +55,7 @@ const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ setBossS
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
+                    {console.log(nftsSelected)}
                     <div onClick={close}>
                         <ExitPopup />
                     </div>
@@ -65,7 +78,7 @@ const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ setBossS
                         }}>
                             Choose your Billionaire
                         </Typography>
-                        <OwnedCharacterGridSmall setCharactedSelected={setCharactedSelected} />
+                        <OwnedCharacterGridSmall />
                     </div>
                 </div>
             )}

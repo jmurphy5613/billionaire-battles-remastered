@@ -19,15 +19,7 @@ import { Box } from '@mui/material';
 
 declare var window:any;
 
-type setBossFunction = (id:number) => void;
-type setCharacterSelected = (id:number) => void;
-
-interface bossGridProps {
-    setBossSelected: setBossFunction,
-    setCharacterSelected: setCharacterSelected
-}
-
-const BossGrid:React.FC<bossGridProps> = ({ setBossSelected, setCharacterSelected }) => {
+const BossGrid = () => {
 
     const [id, setId] = useState(0);
     const [numberOfBosses, setNumberOfBosses] = useState(0);
@@ -123,7 +115,7 @@ const BossGrid:React.FC<bossGridProps> = ({ setBossSelected, setCharacterSelecte
             */}
             <div>
                 { dataFetched && <BossGridItem 
-                    key={id} 
+                    id={id}
                     name={bosses[id][1]} 
                     health={hexToInt(bosses[id][5])} 
                     maxHealth={hexToInt(bosses[id][6])} 
@@ -133,8 +125,6 @@ const BossGrid:React.FC<bossGridProps> = ({ setBossSelected, setCharacterSelecte
                     tokenId={tokenIds[id]}
                     attackDamage={bosses[id][7]}
                     attackName={bosses[id][4]}
-                    setBossSelected={setBossSelected}
-                    setCharacterSelected={setCharacterSelected}
                 />}
             </div>
             { dataFetched && <GridCounter currentId={id} numberOfBosses={numberOfBosses} />}
