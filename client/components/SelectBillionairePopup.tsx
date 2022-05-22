@@ -17,7 +17,6 @@ const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ id }) =>
 
     const dispatch = useDispatch();
     const nftsSelected = useSelector((state:any) => state.nftsSelected.value);
-    console.log(id)
 
     return (
         <Popup
@@ -25,10 +24,9 @@ const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ id }) =>
             trigger={        
             <Button 
             onClickCapture={() => {
-                console.log('hey');
                 dispatch(setNftsSelected({
                     bossSelectedId: id,
-                    characterSelectedId: 0,
+                    characterSelectedId: nftsSelected.characterSelectedId,
                 }))
             }}
             variant="contained" sx={{
@@ -55,7 +53,6 @@ const SelectBillionairePopup:React.FC<SelectBillionairePopupProps> = ({ id }) =>
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    {console.log(nftsSelected)}
                     <div onClick={close}>
                         <ExitPopup />
                     </div>

@@ -26,7 +26,6 @@ const OwnedCharacterGridSmall = () => {
 
             //get the users wallet
             const wallet = await etherConnection.request({ method: 'eth_accounts' })
-            console.log(wallet);
 
 
             //get the users nfts
@@ -40,7 +39,6 @@ const OwnedCharacterGridSmall = () => {
                     }
                     
                 }
-                console.log(nftIndexesInt);
 
                 //get the metadata from the nfts owned
                 const characterMetaData = [];
@@ -76,7 +74,6 @@ const OwnedCharacterGridSmall = () => {
             await getOwnedBillionaires();
         }
         fetchData();
-        console.log(ownedBillionaires);
     }, []);
 
 
@@ -87,9 +84,9 @@ const OwnedCharacterGridSmall = () => {
             width: '80%',
             gridGap: '3rem',
         }}>
-            {ownedBillionaires.map(element => {
+            {ownedBillionaires.map((element, index )=> {
                 return (
-                    <OwnedCharacterSmallGridItem id={element.id} name={element.name} health={element.health} maxHealth={element.maxHealth} image={element.image}  />
+                    <OwnedCharacterSmallGridItem key={index} id={element.id} name={element.name} health={element.health} maxHealth={element.maxHealth} image={element.image}  />
                 )
             })}
         </div>

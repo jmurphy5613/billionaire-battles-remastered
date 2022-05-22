@@ -46,7 +46,6 @@ const BossGrid = () => {
             //fetch data for indexes found
             for(let i = 0; i < nftIndexesInt.length; i++) {
                 const current = await contract.getBossStringDataById(nftIndexesInt[i]);
-                console.log(current, i);
                 //check if the current index has a valid boss
                 //current[1] is the name
                 if(!current[1] == "") {

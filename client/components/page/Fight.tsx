@@ -1,18 +1,21 @@
-//@ts-nocheck
-
-
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import BossGrid from '../boss-grid/BossGrid';
 
 
 const Fight:React.FC = () => {
 
-    const [bossSelected, setBossSelected] = useState(0);
-    const [characterSelected, setCharacterSelected] = useState(0);
+    const nftsSelected = useSelector((state:any) => state.nftsSelected.value);
 
-    if(bossSelected != 0 && characterSelected != 0) {
-        console.log(bossSelected, characterSelected);
+    if(nftsSelected.bossSelectedId != 0 && nftsSelected.characterSelectedId != 0) {
+        console.log(nftsSelected);
+
+        return (
+            <div>
+                
+            </div>
+        )
     }
 
     return (
@@ -21,14 +24,6 @@ const Fight:React.FC = () => {
             height: '90vh',
             textAlign: 'center',
         }}>
-            {/* <Typography variant="h3" sx={{
-                marginTop: '3rem',
-                color: '#ffffff',
-                fontFamily: 'Inter',
-                fontWeight: '500'
-            }}>
-                Challenge a Billionaire!
-            </Typography> */}
             <BossGrid />
         </div>
     )
