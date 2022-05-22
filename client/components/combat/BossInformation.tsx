@@ -5,6 +5,10 @@ import { ethers } from 'ethers';
 import { BillionaireBattlesAddress } from '../../helpers/addresses';
 import BillionaireBattles from '../../public/BillionaireBattles.json';
 
+import { hexToInt } from '../../helpers/conversions';
+
+import HealthBar from './HealthBar';
+
 
 declare var window:any;
 
@@ -15,7 +19,7 @@ interface BossInformationProps {
 const BossInformation:React.FC<BossInformationProps> = ({ tokenId }) => {
 
     const [dataFetched, setDataFetched] = useState(false);
-    const [bossInformation, setBossInformation] = useState();
+    const [bossInformation, setBossInformation] = useState<any>();
 
     const fetchData = async () => {
         const etherConnection = window.ethereum;
@@ -25,7 +29,7 @@ const BossInformation:React.FC<BossInformationProps> = ({ tokenId }) => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
-            const bossData = contract.getBossStringDataById(tokenId);
+            const bossData = await contract.getBossStringDataById(tokenId);
             setBossInformation(bossData);
 
             setDataFetched(true);
@@ -36,13 +40,37 @@ const BossInformation:React.FC<BossInformationProps> = ({ tokenId }) => {
         fetchData()
     }, [])
 
+    /*
+    0 - wallet
+    1 - name
+    2 - descirption
+    3 - image
+    4 - attack
+    */
+
+    if(!dataFetched) {
+        return <div></div>
+    }
+
     return (
         <div style={{
             width: '100%',
-            height: '40vh',
-            border: '1px solid white'
+            height: '44vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
         }}>
-
+            <div 
+                style={{
+                    height: '300px',
+                    width: '300px',
+                    backgroundImage: `url(${bossInformation[3]})`,
+                    backgroundSize: 'cover',
+                    borderRadius: '2rem'
+                }}
+            />
+            <HealthBar health={`${hexToInt(bossInformation[5])}`} maxHealth={`${hexToInt(bossInformation[6])}`} />
         </div>
     )
 }

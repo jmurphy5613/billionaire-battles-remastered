@@ -3,7 +3,10 @@
 
 const AttackChoices = () => {
     return (
-        <div style={{}}>
+        <div style={{
+            height: '6vh',
+            width: '100%',
+        }}>
 
         </div>
     )
