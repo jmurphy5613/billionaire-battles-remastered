@@ -17,6 +17,8 @@ import SellButtonPopup from '../../../components/SellButtonPopup';
 import CharacterPrice from '../../../components/CharacterPrice';
 import BuyButton from '../../../components/BuyButton';
 
+import { hexToInt } from '../../../helpers/conversions';
+
 
 
 declare var window: any
@@ -46,8 +48,32 @@ const ItemProfile = () => {
                 setCharacterOwner(res);
             });
 
+        {/*
+        10-12
+        
+        */}
             //get the abilities
-            await contract
+            await contract.getCharacterById(id).then((res:any) => {
+                console.log(res)
+                setAbilitiesList([
+                    {
+                        name: 'Primary Attack',
+                        nickname: res.attack1Name,
+                        damage: hexToInt(res[10])
+                    },
+                    {
+                        name: 'Secondary Attack',
+                        nickname: res.attack2Name,
+                        damage: hexToInt(res[11])
+                    },
+                    {
+                        name: 'Ultimate Attack',
+                        nickname: res.attack3Name,
+                        damage: hexToInt(res[12])
+                    }
+                ])
+            });
+
         }
     }
 
@@ -60,7 +86,7 @@ const ItemProfile = () => {
             })
         }
     }
-
+    const [abilitiesList, setAbilitiesList] = useState([]);
     const [userIsOwner, setUserIsOwner] = useState(false);
     const [characterData, setCharacterData] = useState<Array<number>>();
     const [dataLoaded, setDataLoaded] = useState<boolean>();
@@ -150,7 +176,7 @@ const ItemProfile = () => {
                     
                 </div>
                 <div style={{marginTop: '0.3rem'}}>
-                    <ProfileStatsGrid name={"Character Stats:"} items={characterAbilities} />
+                    <ProfileStatsGrid name={"Character Stats:"} items={abilitiesList} />
                 </div>
 
             </div>

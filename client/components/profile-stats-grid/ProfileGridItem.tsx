@@ -50,7 +50,7 @@ const ProfileGridItem:React.FC<profileGridItemProps> = ({name, nickname, damage}
                 padding: '0',
                 margin: '0',
             }}>
-                {`${damage}`}
+                {`${damage} dmg`}
             </Typography>
         </div>
     )
