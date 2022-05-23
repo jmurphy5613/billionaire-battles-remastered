@@ -18,7 +18,7 @@ const Fight:React.FC = () => {
                 {/* This is the area for the boss */}
                 <BossInformation tokenId={nftsSelected.bossSelectedId} />
                 {/* This is the area for the Attack Choices */}
-                <AttackChoices />
+                <AttackChoices tokenId={nftsSelected.characterSelectedId} />
                 {/* This is the area for the character that is challenging */}
                 <CharacterInformation tokenId={nftsSelected.characterSelectedId} />
             </div>
