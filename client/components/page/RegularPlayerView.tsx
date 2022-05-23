@@ -4,6 +4,7 @@ import MarketPlace from './Marketplace';
 import OwnedBillionaires from './OwnedBillionaires';
 import Fight from './Fight';
 import Store from './Store';
+import Roster from './Roster';
 
 
 const RegularPlayerView:React.FC = () => {
@@ -48,12 +49,21 @@ const RegularPlayerView:React.FC = () => {
                     fontSize: '1.0rem',
                     fontWeight: '500',
                     textTransform: 'none',
+                }} label="Roster" />
+                <Tab sx={{
+                    color: '#fe5b77',
+                    fontFamily: 'Poppins, sans-serif',
+                    fontSize: '1.0rem',
+                    fontWeight: '500',
+                    textTransform: 'none',
                 }} label="Store" />
             </Tabs>
             {value === 0 && <MarketPlace />}
             {value === 1 && <OwnedBillionaires />}
             {value === 2 && <Fight />}
-            {value === 3 && <Store />}
+            {value === 3 && <Roster />}
+            {value === 4 && <Store />}
+
         </div>
     )
 }
