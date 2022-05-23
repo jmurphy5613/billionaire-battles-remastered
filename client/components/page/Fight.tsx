@@ -12,7 +12,6 @@ const Fight:React.FC = () => {
     const nftsSelected = useSelector((state:any) => state.nftsSelected.value);
 
     if(nftsSelected.bossSelectedId != 0 && nftsSelected.characterSelectedId != 0) {
-        console.log(nftsSelected);
 
         return (
             <div>
@@ -21,7 +20,7 @@ const Fight:React.FC = () => {
                 {/* This is the area for the Attack Choices */}
                 <AttackChoices />
                 {/* This is the area for the character that is challenging */}
-                <CharacterInformation />
+                <CharacterInformation tokenId={nftsSelected.characterSelectedId} />
             </div>
         )
     }

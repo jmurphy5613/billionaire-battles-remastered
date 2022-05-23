@@ -5,8 +5,6 @@ import { ethers } from 'ethers';
 import { BillionaireBattlesAddress } from '../../helpers/addresses';
 import BillionaireBattles from '../../public/BillionaireBattles.json';
 
-import { hexToInt } from '../../helpers/conversions';
-
 import HealthBar from './HealthBar';
 
 
@@ -63,14 +61,14 @@ const BossInformation:React.FC<BossInformationProps> = ({ tokenId }) => {
         }}>
             <div 
                 style={{
-                    height: '300px',
-                    width: '300px',
+                    height: '275px',
+                    width: '275px',
                     backgroundImage: `url(${bossInformation[3]})`,
                     backgroundSize: 'cover',
                     borderRadius: '2rem'
                 }}
             />
-            <HealthBar health={`${hexToInt(bossInformation[5])}`} maxHealth={`${hexToInt(bossInformation[6])}`} />
+            <HealthBar health={bossInformation[5]} maxHealth={bossInformation[6]} />
         </div>
     )
 }
