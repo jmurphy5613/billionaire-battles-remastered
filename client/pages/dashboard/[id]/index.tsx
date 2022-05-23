@@ -35,14 +35,19 @@ const ItemProfile = () => {
             const signer = provider.getSigner();
             const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
 
+            //get the image and name
             await contract.getCharacterDisplayDataById(id).then((res:any) => {
                 setCharacterData(res);
                 setDataLoaded(true);
             });
 
+            //get the owner
             await contract.getOwnerOfCharcterByID(id).then((res:any) => {
                 setCharacterOwner(res);
             });
+
+            //get the abilities
+            await contract
         }
     }
 
@@ -60,24 +65,17 @@ const ItemProfile = () => {
     const [characterData, setCharacterData] = useState<Array<number>>();
     const [dataLoaded, setDataLoaded] = useState<boolean>();
     const [characterOwner, setCharacterOwner] = useState<string>("");
-    const [characterAbilities, setCharacterAbilities] = useState<Array<any>>([
-        {
-            name: 'Primary Attack',
-            nickname: 'Jab',
-            damage: 25
-        },
-        {
-            name: 'Primary Attack',
-            nickname: 'Jab',
-            damage: 25
-        },
-        {
-            name: 'Primary Attack',
-            nickname: 'Jab',
-            damage: 25
-        },
 
-    ]);
+    {/* 
+    This is the format of the abilities in the profile
+    {
+        name: 'Primary Attack',
+        nickname: 'Jab',
+        damage: 25
+    },
+    
+    */}
+
 
     useEffect( () => {
         if(!id) {
