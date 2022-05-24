@@ -235,5 +235,19 @@ contract BillionaireBattles is ERC721 {
         return characters[id];
     }
 
+    function createAttack(uint tokenId, uint attackNumber, uint bossId) public {
+        //attackDamageAttack1
+        uint damage = 0;
+        if(attackNumber == 1) {
+            damage = characters[tokenId].attackDamageAttack1;
+        } else if(attackNumber == 2) {
+            damage = characters[tokenId].attackDamageAttack2;
+        } else if(attackNumber == 3) {
+            damage = characters[tokenId].attackDamageAttack3;
+        }
+
+        bosses[bossId].health-=damage;
+    }
+
 
 }

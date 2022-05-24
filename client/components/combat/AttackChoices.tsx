@@ -11,10 +11,11 @@ import { hexToInt } from '../../helpers/conversions';
 declare var window:any;
 
 interface AttackChoicesProps {
-    tokenId: number
+    tokenId: number,
+    bossId: number
 }
 
-const AttackChoices:React.FC<AttackChoicesProps> = ({ tokenId }) => {
+const AttackChoices:React.FC<AttackChoicesProps> = ({ tokenId, bossId }) => {
 
     const [dataFetched, setDataFetched] = useState(false);
     const [abilitiesList, setAbilitiesList] = useState([{},{},{}])
@@ -47,6 +48,17 @@ const AttackChoices:React.FC<AttackChoicesProps> = ({ tokenId }) => {
         }
     }
 
+    const createAttack = async (number:number) => {
+        const etherConnection = window.ethereum;
+        if(etherConnection) {
+            const provider = new ethers.providers.Web3Provider(etherConnection);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(BillionaireBattlesAddress, BillionaireBattles.abi, signer);
+
+            await contract.createAttack(tokenId, number, bossId);
+        }
+    }
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -58,9 +70,23 @@ const AttackChoices:React.FC<AttackChoicesProps> = ({ tokenId }) => {
             display: 'flex',
             justifyContent: 'center'
         }}>
-            <Button variant="contained" sx={{ marginRight: '0.5rem', marginLeft: '0.5rem', backgroundColor: '#6c56d2' }}>{`${abilitiesList[0].nickname} | ${abilitiesList[0].damage} dmg`}</Button>
-            <Button variant="contained" sx={{ marginRight: '0.5rem', marginLeft: '0.5rem', backgroundColor: '#6c56d2' }}>{`${abilitiesList[1].nickname} | ${abilitiesList[1].damage} dmg`}</Button>
-            <Button variant="contained" sx={{ marginRight: '0.5rem', marginLeft: '0.5rem', backgroundColor: '#6c56d2' }}>{`${abilitiesList[2].nickname} | ${abilitiesList[2].damage} dmg`}</Button>
+            <Button variant="contained" onClick={e => {
+                createAttack(1);
+            }} sx={{ 
+                marginRight: '0.5rem', 
+                marginLeft: '0.5rem', 
+                backgroundColor: '#6c56d2' 
+            }}>{`${abilitiesList[0].nickname} | ${abilitiesList[0].damage} dmg`}</Button>
+            <Button variant="contained" sx={{ 
+                marginRight: '0.5rem', 
+                marginLeft: '0.5rem', 
+                backgroundColor: '#6c56d2' 
+            }}>{`${abilitiesList[1].nickname} | ${abilitiesList[1].damage} dmg`}</Button>
+            <Button variant="contained" sx={{ 
+                marginRight: '0.5rem', 
+                marginLeft: '0.5rem', 
+                backgroundColor: '#6c56d2' 
+            }}>{`${abilitiesList[2].nickname} | ${abilitiesList[2].damage} dmg`}</Button>
         </div>
     )
 }
